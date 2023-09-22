@@ -1,0 +1,26 @@
+<resources>
+    <string name="app_name">FoodEase</string>
+    <string name="login">Login</string>
+    <string name="register">Don\'t have an Account? Register Here</string>
+    <string name="registerTitle">Register</string>
+    <string name="haveacc">Already have an Account? Login Here</string>
+    <string name="foodassistance">Food Assistance Request</string>
+    <string name="assistanceCatalog">Food Assistance Catalog</string>
+    <string name="foodupdate">Food Update Request</string>
+    <string name="volunteerapp">Volunteer Application</string>
+    <string name="volunteerappform">Volunteer Application Form</string>
+    <string name="volunteerappdetail">Volunteer Application Detail</string>
+    <string name="fooddonation">Food Donation Module</string>
+    <string name="foodcatalog">Food Donation Catalog</string>
+    <string name="fooddetail">Food Donation Detail</string>
+    <string name="fooddreqview">Food Request View</string>
+    <string name="fooddupdate">Food Donation Update</string>
+    <string name="inventorycatalog">Inventory Catalog</string>
+    <string name="inventorydetail">Inventory Catalog Detail</string>
+    <string name="inventoryform">Inventory Catalog Form</string>
+    <string name="inventoryupdate">Inventory Catalog Update</string>
+    <string name="home">Home</string>
+    <string name="inventoryconfirmation">Inventory Confirmation</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+</resources>

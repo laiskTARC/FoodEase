@@ -1,0 +1,165 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/navigation"
+    app:startDestination="@id/loginFragment">
+
+    <fragment
+        android:id="@+id/loginFragment"
+        android:name="com.example.foodease.LoginFragment"
+        android:label="fragment_login"
+        tools:layout="@layout/fragment_login" >
+        <action
+            android:id="@+id/action_loginFragment_to_homeFragment"
+            app:destination="@id/homeFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/homeFragment"
+        android:name="com.example.foodease.HomeFragment"
+        android:label="fragment_home"
+        tools:layout="@layout/fragment_home" >
+        <action
+            android:id="@+id/action_homeFragment_to_loginFragment"
+            app:destination="@id/loginFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_donationListFragment"
+            app:destination="@id/donationListFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_inventoryListFragment"
+            app:destination="@id/inventoryListFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_requestListFragment"
+            app:destination="@id/requestListFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_volunteerListFragment"
+            app:destination="@id/volunteerListFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/donationListFragment"
+        android:name="com.example.foodease.DonationListFragment"
+        android:label="fragment_donation_list"
+        tools:layout="@layout/fragment_donation_list" >
+        <action
+            android:id="@+id/action_donationListFragment_to_homeFragment"
+            app:destination="@id/homeFragment" />
+        <action
+            android:id="@+id/action_donationListFragment_to_donationListDetailFragment"
+            app:destination="@id/donationListDetailFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/donationListDetailFragment"
+        android:name="com.example.foodease.DonationListDetailFragment"
+        android:label="fragment_donation_list_detail"
+        tools:layout="@layout/fragment_donation_list_detail" >
+        <action
+            android:id="@+id/action_donationListDetailFragment_to_donationListFragment"
+            app:destination="@id/donationListFragment" />
+        <action
+            android:id="@+id/action_donationListDetailFragment_to_donationListUpdateFragment"
+            app:destination="@id/donationListUpdateFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/donationListUpdateFragment"
+        android:name="com.example.foodease.DonationListUpdateFragment"
+        android:label="fragment_donation_list_update"
+        tools:layout="@layout/fragment_donation_list_update" >
+        <action
+            android:id="@+id/action_donationListUpdateFragment_to_donationListDetailFragment"
+            app:destination="@id/donationListDetailFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/inventoryListFragment"
+        android:name="com.example.foodease.InventoryListFragment"
+        android:label="fragment_inventory_list"
+        tools:layout="@layout/fragment_inventory_list" >
+        <action
+            android:id="@+id/action_inventoryListFragment_to_homeFragment"
+            app:destination="@id/homeFragment" />
+        <action
+            android:id="@+id/action_inventoryListFragment_to_inventoryListDetailFragment"
+            app:destination="@id/inventoryListDetailFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/inventoryListDetailFragment"
+        android:name="com.example.foodease.InventoryListDetailFragment"
+        android:label="fragment_inventory_list_detail"
+        tools:layout="@layout/fragment_inventory_list_detail" >
+        <action
+            android:id="@+id/action_inventoryListDetailFragment_to_inventoryListFragment"
+            app:destination="@id/inventoryListFragment" />
+        <action
+            android:id="@+id/action_inventoryListDetailFragment_to_inventoryListAddFragment"
+            app:destination="@id/inventoryListAddFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/inventoryListAddFragment"
+        android:name="com.example.foodease.InventoryListAddFragment"
+        android:label="fragment_inventory_list_add"
+        tools:layout="@layout/fragment_inventory_list_add" >
+        <action
+            android:id="@+id/action_inventoryListAddFragment_to_inventoryListFragment"
+            app:destination="@id/inventoryListFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/inventoryListUpdateFragment"
+        android:name="com.example.foodease.InventoryListUpdateFragment"
+        android:label="fragment_inventory_list_update"
+        tools:layout="@layout/fragment_inventory_list_update" />
+    <fragment
+        android:id="@+id/requestListFragment"
+        android:name="com.example.foodease.RequestListFragment"
+        android:label="fragment_request_list"
+        tools:layout="@layout/fragment_request_list" >
+        <action
+            android:id="@+id/action_requestListFragment_to_requestListDetailFragment"
+            app:destination="@id/requestListDetailFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/requestListDetailFragment"
+        android:name="com.example.foodease.RequestListDetailFragment"
+        android:label="fragment_request_list_detail"
+        tools:layout="@layout/fragment_request_list_detail" >
+        <action
+            android:id="@+id/action_requestListDetailFragment_to_requestListFragment"
+            app:destination="@id/requestListFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/requestListAddFragment"
+        android:name="com.example.foodease.RequestListAddFragment"
+        android:label="fragment_request_list_add"
+        tools:layout="@layout/fragment_request_list_add" />
+    <fragment
+        android:id="@+id/requestListUpdateFragment"
+        android:name="com.example.foodease.RequestListUpdateFragment"
+        android:label="fragment_request_list_update"
+        tools:layout="@layout/fragment_request_list_update" />
+    <fragment
+        android:id="@+id/requestListViewFragment"
+        android:name="com.example.foodease.RequestListViewFragment"
+        android:label="fragment_request_list_view"
+        tools:layout="@layout/fragment_request_list_view" />
+    <fragment
+        android:id="@+id/volunteerListFragment"
+        android:name="com.example.foodease.VolunteerListFragment"
+        android:label="fragment_volunteer_list"
+        tools:layout="@layout/fragment_volunteer_list" >
+        <action
+            android:id="@+id/action_volunteerListFragment_to_volunteerListDetailFragment"
+            app:destination="@id/volunteerListDetailFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/volunteerListDetailFragment"
+        android:name="com.example.foodease.VolunteerListDetailFragment"
+        android:label="fragment_volunteer_list_detail"
+        tools:layout="@layout/fragment_volunteer_list_detail" >
+        <action
+            android:id="@+id/action_volunteerListDetailFragment_to_volunteerListFragment"
+            app:destination="@id/volunteerListFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/volunteerListAddFragment"
+        android:name="com.example.foodease.VolunteerListAddFragment"
+        android:label="fragment_volunteer_list_add"
+        tools:layout="@layout/fragment_volunteer_list_add" />
+</navigation>
