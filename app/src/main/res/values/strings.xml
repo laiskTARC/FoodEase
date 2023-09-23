@@ -23,9 +23,6 @@
     <string name="inventoryconfirmation">Inventory Confirmation</string>
     <string name="event">Event</string>
     <string name="profile">Profile</string>
-    <string name="view">View</string>
-    <string name="more_info">More info</string>
-    <!-- TODO: Remove or change this placeholder text -->
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>
