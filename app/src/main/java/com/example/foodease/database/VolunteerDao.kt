@@ -7,12 +7,11 @@ import androidx.room.Insert
 import androidx.room.OnConflictStrategy
 import androidx.room.Query
 import androidx.room.Update
-import com.example.foodease.Volunteer
 
 @Dao
-interface ContactDao {
+interface VolunteerDao {
     @Query("SELECT * FROM volunteers ORDER BY name ASC")
-    fun getAllContact(): LiveData<List<Volunteer>>
+    fun getAllVolunteer(): LiveData<List<Volunteer>>
 
     @Query("DELETE FROM volunteers")
     suspend fun deleteAll()

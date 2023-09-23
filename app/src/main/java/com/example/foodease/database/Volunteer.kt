@@ -1,4 +1,4 @@
-package com.example.foodease
+package com.example.foodease.database
 
 import androidx.room.Entity
 import androidx.room.PrimaryKey

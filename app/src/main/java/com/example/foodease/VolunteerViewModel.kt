@@ -4,6 +4,7 @@ import android.app.Application
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.viewModelScope
+import com.example.foodease.database.Volunteer
 import com.example.foodease.database.VolunteerDatabase
 import com.example.foodease.database.VolunteerRepository
 import kotlinx.coroutines.launch
@@ -17,7 +18,7 @@ class VolunteerViewModel(application: Application): AndroidViewModel(application
         //contactList.value = list
 
         //Create an instance of DB
-        val contactDao = VolunteerDatabase.getDatabase(application).VolunteerDao()
+        val contactDao = VolunteerDatabase.getDatabase(application).volunteerDao()
         //Connect DAO to repository
         repository = VolunteerRepository(contactDao)
         //Retrieve contact records

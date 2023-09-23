@@ -7,6 +7,8 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import androidx.navigation.fragment.findNavController
+import android.content.Intent
+import android.net.Uri
 
 
 class HomeFragment : Fragment() {
@@ -17,6 +19,21 @@ class HomeFragment : Fragment() {
     ): View? {
         // Inflate the layout for this fragment
         val view =  inflater.inflate(R.layout.fragment_home, container, false)
+        val phone = "tel:01400114514"
+        val address = "chinco-wm20@student.tarc.edu.my"
+
+
+        binding.viewButton.setOnClickListener{
+            val contactIntent = Intent(Intent.ACTION_DIAL, Uri.parse(phone))
+            startActivity(contactIntent)
+        }
+
+        binding.button.setOnClickListener {
+            val emailIntent : Intent = Intent(Intent.ACTION_SENDTO, Uri.parse("mailto:" + address))
+            emailIntent.putExtra(Intent.EXTRA_EMAIL, address);
+
+            startActivity(Intent.createChooser(emailIntent, "Chooser Title"));
+        }
 
         val donationButton = view.findViewById<Button>(R.id.donationButton)
         donationButton.setOnClickListener {
