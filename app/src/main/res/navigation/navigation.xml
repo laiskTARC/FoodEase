@@ -8,17 +8,20 @@
     <fragment
         android:id="@+id/loginFragment"
         android:name="com.example.foodease.LoginFragment"
-        android:label="fragment_login"
-        tools:layout="@layout/fragment_login" >
+        android:label="@string/login"
+        tools:layout="@layout/fragment_login">
         <action
             android:id="@+id/action_loginFragment_to_homeFragment"
             app:destination="@id/homeFragment" />
+        <action
+            android:id="@+id/action_loginFragment_to_eventList"
+            app:destination="@id/eventFragment" />
     </fragment>
     <fragment
         android:id="@+id/homeFragment"
         android:name="com.example.foodease.HomeFragment"
-        android:label="fragment_home"
-        tools:layout="@layout/fragment_home" >
+        android:label="@string/home"
+        tools:layout="@layout/fragment_home">
         <action
             android:id="@+id/action_homeFragment_to_loginFragment"
             app:destination="@id/loginFragment" />
@@ -34,6 +37,10 @@
         <action
             android:id="@+id/action_homeFragment_to_volunteerListFragment"
             app:destination="@id/volunteerListFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_eventList"
+            app:destination="@id/eventFragment"
+            app:enterAnim="@anim/nav_default_enter_anim" />
     </fragment>
     <fragment
         android:id="@+id/donationListFragment"
@@ -71,8 +78,8 @@
     <fragment
         android:id="@+id/inventoryListFragment"
         android:name="com.example.foodease.InventoryListFragment"
-        android:label="fragment_inventory_list"
-        tools:layout="@layout/fragment_inventory_list" >
+        android:label="@string/inventory"
+        tools:layout="@layout/fragment_inventory_list">
         <action
             android:id="@+id/action_inventoryListFragment_to_homeFragment"
             app:destination="@id/homeFragment" />
@@ -162,4 +169,9 @@
         android:name="com.example.foodease.VolunteerListAddFragment"
         android:label="fragment_volunteer_list_add"
         tools:layout="@layout/fragment_volunteer_list_add" />
+    <fragment
+        android:id="@+id/eventFragment"
+        android:name="com.example.foodease.EventList"
+        android:label="Event"
+        tools:layout="@layout/fragment_event_list" />
 </navigation>
