@@ -2,6 +2,7 @@ package com.example.foodease
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.fragment.app.Fragment
 import androidx.navigation.NavController
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.setupActionBarWithNavController
@@ -21,7 +22,25 @@ class MainActivity : AppCompatActivity() {
                 NavHostFragment
         navController = navHostFragment.navController
 
+        binding.bottomNavAdmin.setOnItemSelectedListener{
+            when(it.itemId){
+                R.id.itemEvent -> {
+                    loadFragment(EventList())
+                    true
+                }
 
+                else -> {
+                    false
+                }
+            }
+        }
+
+    }
+
+    private  fun loadFragment(fragment: Fragment){
+        val transaction = supportFragmentManager.beginTransaction()
+        transaction.replace(R.id.fragment,fragment)
+        transaction.commit()
     }
 
     override fun onSupportNavigateUp(): Boolean {

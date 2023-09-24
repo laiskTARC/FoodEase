@@ -1,31 +1,31 @@
 package com.example.foodease
 
+import android.content.Context
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
+import com.android.volley.AuthFailureError
+import com.android.volley.Request
+import com.android.volley.Response
+import com.android.volley.toolbox.StringRequest
+import com.android.volley.toolbox.Volley
+import com.example.foodease.databinding.FragmentHomeBinding
+import com.example.foodease.databinding.FragmentVolunteerListAddBinding
 
-// TODO: Rename parameter arguments, choose names that match
-// the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-private const val ARG_PARAM1 = "param1"
-private const val ARG_PARAM2 = "param2"
-
-/**
- * A simple [Fragment] subclass.
- * Use the [VolunteerListAddFragment.newInstance] factory method to
- * create an instance of this fragment.
- */
 class VolunteerListAddFragment : Fragment() {
-    // TODO: Rename and change types of parameters
-    private var param1: String? = null
-    private var param2: String? = null
+
+    private var _binding : FragmentVolunteerListAddBinding? = null
+    private val binding get() = _binding!!
+    private val URL: String ="https://chincheeonntesting.000webhostapp.com/volunteer/create.php"
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         arguments?.let {
-            param1 = it.getString(ARG_PARAM1)
-            param2 = it.getString(ARG_PARAM2)
+
         }
     }
 
@@ -33,8 +33,15 @@ class VolunteerListAddFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_volunteer_list_add, container, false)
+        _binding = FragmentVolunteerListAddBinding.inflate(inflater, container, false)
+
+        val name = binding.name.text.toString().trim()
+
+
+
+
+
+        return binding.root
     }
 
     companion object {
@@ -51,8 +58,7 @@ class VolunteerListAddFragment : Fragment() {
         fun newInstance(param1: String, param2: String) =
             VolunteerListAddFragment().apply {
                 arguments = Bundle().apply {
-                    putString(ARG_PARAM1, param1)
-                    putString(ARG_PARAM2, param2)
+
                 }
             }
     }
