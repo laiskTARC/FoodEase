@@ -41,6 +41,9 @@
             android:id="@+id/action_homeFragment_to_eventList"
             app:destination="@id/eventFragment"
             app:enterAnim="@anim/nav_default_enter_anim" />
+        <action
+            android:id="@+id/action_homeFragment_to_volunteerListAddFragment"
+            app:destination="@id/volunteerListAddFragment" />
     </fragment>
     <fragment
         android:id="@+id/donationListFragment"

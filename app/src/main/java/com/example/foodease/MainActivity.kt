@@ -45,6 +45,11 @@ class MainActivity : AppCompatActivity() {
                     navController.navigate(R.id.inventoryListFragment)
                     true
                 }
+
+                R.id.itemVolunteer -> {
+                    navController.navigate(R.id.volunteerListAddFragment)
+                    true
+                }
                 // Handle other bottom navigation items similarly
                 else -> false
             }

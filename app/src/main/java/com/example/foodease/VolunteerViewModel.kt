@@ -3,6 +3,7 @@ package com.example.foodease
 import android.app.Application
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
 import com.example.foodease.database.Volunteer
 import com.example.foodease.database.VolunteerDatabase
@@ -12,6 +13,10 @@ import kotlinx.coroutines.launch
 class VolunteerViewModel(application: Application): AndroidViewModel(application) {
     var volunteerList: LiveData<List<Volunteer>>
     private val repository: VolunteerRepository
+
+    private val _volunteer : MutableLiveData<Volunteer> by lazy {
+        MutableLiveData<Volunteer>()
+    }
 
     init {
         //val list = ArrayList<Contact>()
@@ -23,6 +28,14 @@ class VolunteerViewModel(application: Application): AndroidViewModel(application
         repository = VolunteerRepository(contactDao)
         //Retrieve contact records
         volunteerList = repository.allContacts
+
+        _volunteer.value = Volunteer("","","","")
+    }
+
+    val volunteer: LiveData<Volunteer> get() = _volunteer
+
+    fun setVolunteer(v: Volunteer){
+        _volunteer.value = v
     }
 
     //Coroutine
