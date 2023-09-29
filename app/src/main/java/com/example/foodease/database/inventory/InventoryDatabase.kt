@@ -1,12 +1,10 @@
-package com.example.foodease.database
+package com.example.foodease.database.inventory
 
 import android.content.Context
 import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
-import androidx.sqlite.db.SupportSQLiteDatabase
-import com.example.foodease.dao.InventoryDao
-import com.example.foodease.entities.Inventory
+import com.example.foodease.ui.inventory.Inventory
 
 @Database(entities = arrayOf(Inventory::class), version = 1, exportSchema = false)
 abstract class InventoryDatabase: RoomDatabase() {

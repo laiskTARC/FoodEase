@@ -1,4 +1,4 @@
-package com.example.foodease
+package com.example.foodease.ui.inventory
 
 import android.content.ContentValues
 import android.os.Bundle
@@ -12,6 +12,7 @@ import android.widget.EditText
 import android.widget.TextView
 import android.widget.Toast
 import androidx.navigation.fragment.findNavController
+import com.example.foodease.R
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
 

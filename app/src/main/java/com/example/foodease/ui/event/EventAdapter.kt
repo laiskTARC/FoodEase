@@ -1,4 +1,4 @@
-package com.example.foodease
+package com.example.foodease.ui.event
 
 import android.view.LayoutInflater
 import android.view.View
@@ -6,7 +6,8 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
-import com.example.foodease.entities.Event
+import com.example.foodease.R
+import com.example.foodease.database.event.Event
 
 class EventAdapter : RecyclerView.Adapter<EventAdapter.ViewHolder>(){
 
@@ -42,7 +43,7 @@ class EventAdapter : RecyclerView.Adapter<EventAdapter.ViewHolder>(){
         return dataList.size
     }
 
-    override fun onBindViewHolder(holder: EventAdapter.ViewHolder, position: Int) {
+    override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val event = dataList[position]
         holder.eventName.text = event.name
     }

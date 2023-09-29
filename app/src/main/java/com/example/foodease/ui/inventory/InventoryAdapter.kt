@@ -1,21 +1,15 @@
-package com.example.foodease.adapter
+package com.example.foodease.ui.inventory
 
 import android.content.Context
 import android.os.Bundle
-import android.text.Layout
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
-import android.widget.ImageView
 import android.widget.TextView
 import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
-import com.example.foodease.EventAdapter
 import com.example.foodease.R
-import com.example.foodease.adapter.InventoryAdapter
-import com.example.foodease.entities.Event
-import com.example.foodease.entities.Inventory
 
 class InventoryAdapter(private val inventoryList: ArrayList<Inventory>): RecyclerView.Adapter<InventoryAdapter.ViewHolder>() {
     private var dataList = emptyList<Inventory>()

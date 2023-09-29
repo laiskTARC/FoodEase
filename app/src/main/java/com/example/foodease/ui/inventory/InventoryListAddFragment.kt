@@ -1,8 +1,6 @@
-package com.example.foodease
+package com.example.foodease.ui.inventory
 
 import android.content.ContentValues.TAG
-import android.content.Context
-import android.content.SharedPreferences
 import android.os.Bundle
 import android.text.TextUtils
 import android.util.Log
@@ -10,16 +8,10 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Button
 import android.widget.Toast
 import androidx.fragment.app.activityViewModels
-import androidx.fragment.app.viewModels
-import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
-import com.example.foodease.dao.InventoryDao
-import com.example.foodease.database.InventoryDatabase
 import com.example.foodease.databinding.FragmentInventoryListAddBinding
-import com.example.foodease.entities.Inventory
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
 

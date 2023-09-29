@@ -1,4 +1,4 @@
-package com.example.foodease.database
+package com.example.foodease.database.volunteer
 
 import android.content.Context
 import androidx.room.Database

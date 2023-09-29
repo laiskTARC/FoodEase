@@ -1,4 +1,4 @@
-package com.example.foodease.entities
+package com.example.foodease.ui.inventory
 
 import androidx.room.Entity
 import androidx.room.PrimaryKey

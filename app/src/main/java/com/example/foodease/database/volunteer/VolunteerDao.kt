@@ -1,4 +1,4 @@
-package com.example.foodease.database
+package com.example.foodease.database.volunteer
 
 import androidx.lifecycle.LiveData
 import androidx.room.Dao

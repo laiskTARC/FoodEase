@@ -1,4 +1,4 @@
-package com.example.foodease.dao
+package com.example.foodease.database.inventory
 
 import androidx.lifecycle.LiveData
 import androidx.room.Delete
@@ -6,9 +6,7 @@ import androidx.room.Insert
 import androidx.room.OnConflictStrategy
 import androidx.room.Query
 import androidx.room.Update
-import com.example.foodease.entities.Inventory
-import com.google.firebase.database.DatabaseReference
-import io.reactivex.Single
+import com.example.foodease.ui.inventory.Inventory
 
 interface InventoryDao {
 

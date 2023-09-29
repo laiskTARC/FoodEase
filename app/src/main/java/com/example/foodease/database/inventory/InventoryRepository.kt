@@ -1,9 +1,8 @@
-package com.example.foodease.database
+package com.example.foodease.database.inventory
 
-import androidx.annotation.WorkerThread
 import androidx.lifecycle.LiveData
-import com.example.foodease.dao.InventoryDao
-import com.example.foodease.entities.Inventory
+import com.example.foodease.database.inventory.InventoryDao
+import com.example.foodease.ui.inventory.Inventory
 
 class InventoryRepository(private val inventoryDao: InventoryDao) {
     val getAllInventoryItems: LiveData<List<Inventory>> = inventoryDao.getAllInventoryItems()

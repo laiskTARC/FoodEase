@@ -1,21 +1,14 @@
-package com.example.foodease
+package com.example.foodease.ui.inventory
 
 import android.app.Application
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.ViewModelProvider
-import androidx.lifecycle.viewModelScope
-import com.example.foodease.database.InventoryDatabase
-import com.example.foodease.database.InventoryRepository
-import com.example.foodease.entities.Inventory
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ValueEventListener
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.launch
 
 class InventoryViewModel(application: Application): AndroidViewModel(application)  {
 //    private val repository: InventoryRepository
