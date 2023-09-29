@@ -1,0 +1,30 @@
+{
+  "project_info": {
+    "project_number": "798709406925",
+    "firebase_url": "https://foodease-2ac55-default-rtdb.asia-southeast1.firebasedatabase.app",
+    "project_id": "foodease-2ac55",
+    "storage_bucket": "foodease-2ac55.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:798709406925:android:fc2385c902ba2f32b0dd84",
+        "android_client_info": {
+          "package_name": "com.example.foodease"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC0ubtMkw-k12xtyOPHT3DEJv-dx2rOwdU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
