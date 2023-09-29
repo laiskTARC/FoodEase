@@ -24,4 +24,9 @@
         android:icon="@drawable/baseline_done_24"
         android:title="@string/confirm"
         app:showAsAction="always" />
+    <item
+        android:id="@+id/itemDeleteEvent"
+        android:icon="@drawable/baseline_delete_24"
+        android:title="Delete event"
+        app:showAsAction="always" />
 </menu>

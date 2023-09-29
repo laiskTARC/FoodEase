@@ -32,7 +32,7 @@ class DonationAdapter() :
                 editor.putString("id", donation.id.toString())
                 editor.putString("name", donation.name.toString())
                 editor?.apply()
-                it.findNavController().navigate(R.id.donationListDetailFragment)
+                it.findNavController().navigate(R.id.action_donationListFragment_to_donationListDetailFragment)
             }
         }
     }

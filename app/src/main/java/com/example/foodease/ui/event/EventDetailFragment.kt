@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.Menu
 import android.view.MenuInflater
+import android.view.MenuItem
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
@@ -115,6 +116,15 @@ class EventDetailFragment : Fragment() {
         inflater.inflate(R.menu.menu_event_list, menu) // Replace with your menu resource
         menu.findItem(R.id.itemAddEvent).setVisible(false)
         menu.findItem(R.id.itemEditEventConfirm).setVisible(false)
+        menu.findItem(R.id.itemDeleteEvent).setVisible(true)
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        return super.onOptionsItemSelected(item)
+
+        when(item.itemId){
+
+        }
     }
 
     override fun onDestroyView() {

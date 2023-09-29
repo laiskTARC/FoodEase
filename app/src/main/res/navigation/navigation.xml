@@ -53,7 +53,9 @@
         tools:layout="@layout/fragment_donation_list" >
         <action
             android:id="@+id/action_donationListFragment_to_donationListDetailFragment"
-            app:destination="@id/donationListDetailFragment" />
+            app:destination="@id/donationListDetailFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:popEnterAnim="@android:anim/slide_in_left" />
     </fragment>
     <fragment
         android:id="@+id/donationListDetailFragment"
@@ -70,8 +72,8 @@
     <fragment
         android:id="@+id/donationListUpdateFragment"
         android:name="com.example.foodease.ui.donation.DonationListUpdateFragment"
-        android:label="fragment_donation_list_update"
-        tools:layout="@layout/fragment_donation_list_update" >
+        android:label="@string/edit_donation"
+        tools:layout="@layout/fragment_donation_list_update">
         <action
             android:id="@+id/action_donationListUpdateFragment_to_donationListDetailFragment"
             app:destination="@id/donationListDetailFragment" />
@@ -109,7 +111,7 @@
     <fragment
         android:id="@+id/inventoryListUpdateFragment"
         android:name="com.example.foodease.InventoryListUpdateFragment"
-        android:label="fragment_inventory_list_update"
+        android:label="Inventory Update"
         tools:layout="@layout/fragment_inventory_list_update" />
     <fragment
         android:id="@+id/requestListFragment"
@@ -132,7 +134,7 @@
     <fragment
         android:id="@+id/requestListAddFragment"
         android:name="com.example.foodease.RequestListAddFragment"
-        android:label="fragment_request_list_add"
+        android:label="Create Request"
         tools:layout="@layout/fragment_request_list_add" />
     <fragment
         android:id="@+id/requestListUpdateFragment"
@@ -142,7 +144,7 @@
     <fragment
         android:id="@+id/requestListViewFragment"
         android:name="com.example.foodease.RequestListViewFragment"
-        android:label="fragment_request_list_view"
+        android:label="@string/food_request"
         tools:layout="@layout/fragment_request_list_view" />
     <fragment
         android:id="@+id/volunteerListFragment"
@@ -153,12 +155,12 @@
             android:id="@+id/action_volunteerListFragment_to_volunteerListDetailFragment"
             app:destination="@id/volunteerListDetailFragment"
             app:enterAnim="@anim/slide_in_right"
-            app:exitAnim="@android:anim/slide_out_right" />
+            app:popEnterAnim="@android:anim/slide_in_left" />
     </fragment>
     <fragment
         android:id="@+id/volunteerListDetailFragment"
         android:name="com.example.foodease.ui.volunteer.VolunteerListDetailFragment"
-        android:label="Volunteer Details"
+        android:label="@string/volunteer_details"
         tools:layout="@layout/fragment_volunteer_list_detail" />
     <fragment
         android:id="@+id/volunteerListAddFragment"

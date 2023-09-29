@@ -57,7 +57,7 @@ class VolunteerListFragment : Fragment() ,VolunteerClickListener{
 
     override fun onVolunteerClick(eventId: Int?) {
         // Call FragmentB using the NavController
-        findNavController().navigate(R.id.volunteerListDetailFragment)
+        findNavController().navigate(R.id.action_volunteerListFragment_to_volunteerListDetailFragment)
     }
 
 }

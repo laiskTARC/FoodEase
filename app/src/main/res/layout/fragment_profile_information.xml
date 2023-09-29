@@ -43,7 +43,7 @@
         />
 
     <TextView
-        android:id="@+id/textView25"
+        android:id="@+id/textViewDate"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="+602343940"
@@ -81,7 +81,7 @@
         app:layout_constraintVertical_bias="0.346" />
 
     <TextView
-        android:id="@+id/textView24"
+        android:id="@+id/textViewVenue"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="PhoneNumber:"
@@ -124,7 +124,7 @@
         android:background="#9D9D9D"
         app:layout_constraintEnd_toEndOf="@+id/linearLayout"
         app:layout_constraintStart_toStartOf="@+id/linearLayout"
-        app:layout_constraintTop_toBottomOf="@+id/textView25" />
+        app:layout_constraintTop_toBottomOf="@+id/textViewDate" />
 
     <TextView
         android:id="@+id/textView26"
