@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- res/drawable/custom_item_background_selector.xml -->
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:state_checked="true">
+        <shape android:shape="rectangle">
+            <!-- Customize the background color for selected items -->
+            <solid android:color="@color/white" />
+        </shape>
+    </item>
+    <item>
+        <!-- Customize the background color for unselected items -->
+        <shape android:shape="rectangle">
+            <solid android:color="@color/white" />
+        </shape>
+    </item>
+</selector>

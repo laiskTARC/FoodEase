@@ -1,22 +1,26 @@
 package com.example.foodease.ui.event
 
+import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.foodease.R
-import com.example.foodease.database.event.Event
 
-class EventAdapter : RecyclerView.Adapter<EventAdapter.ViewHolder>(){
+class EventAdapter (private val eventClickListener: EventClickListener) : RecyclerView.Adapter<EventAdapter.ViewHolder>(){
 
     private var dataList = emptyList<Event>()
 
 
     class ViewHolder(view: View):RecyclerView.ViewHolder(view){
         val image : ImageView = view.findViewById(R.id.imageViewEvent)
-        val eventName : TextView = view.findViewById(R.id.textViewInventoryName)
+        val eventId : TextView = view.findViewById(R.id.textViewEventId)
+        val eventName : TextView = view.findViewById(R.id.textViewEventName)
+        val venue : TextView = view.findViewById(R.id.textViewVenue)
+        val date : TextView = view.findViewById(R.id.textViewDate)
 
 
         init {
@@ -45,6 +49,31 @@ class EventAdapter : RecyclerView.Adapter<EventAdapter.ViewHolder>(){
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val event = dataList[position]
+        holder.eventId.text = event.id
         holder.eventName.text = event.name
+        holder.venue.text = event.venueAddress
+        holder.date.text = event.startingDate + " - " + event.endingDate
+
+
+
+        val button = holder.itemView.findViewById<Button>(R.id.buttonViewEvent)
+
+        button.setOnClickListener {
+
+            val sharedPref = it.context.getSharedPreferences("event_shared_pref", Context.MODE_PRIVATE)
+            val editor = sharedPref.edit()
+
+            editor?.putString("id", event.id)
+            editor?.putString("name", event.name)
+            editor?.putString("description", event.description)
+            editor?.putString("address", event.venueAddress)
+            editor?.putString("starting", event.startingDate)
+            editor?.putString("ending", event.endingDate)
+            editor?.putString("volunteerRequired", event.volunteerRequired.toString())
+
+            editor?.apply()
+
+            eventClickListener.onEventClick(event.id)
+        }
     }
 }

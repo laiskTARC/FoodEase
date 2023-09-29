@@ -1,8 +1,16 @@
 <resources>
     <string name="app_name">FoodEase</string>
+
     <string name="login">Login</string>
-    <string name="register">Don\'t have an Account? Register Here</string>
-    <string name="registerTitle">Register</string>
+    <string name="name">Name</string>
+    <string name="password">Passwword</string>
+    <string name="confirm_password">Confirm Password</string>
+    <string name="email">Email</string>
+    <string name="age">Age</string>
+
+
+    <string name="register_messag">Don\'t have an Account? Register Here</string>
+    <string name="register">Register</string>
     <string name="haveacc">Already have an Account? Login Here</string>
     <string name="foodassistance">Food Assistance Request</string>
     <string name="assistanceCatalog">Food Assistance Catalog</string>
@@ -15,17 +23,59 @@
     <string name="fooddetail">Food Donation Detail</string>
     <string name="fooddreqview">Food Request View</string>
     <string name="fooddupdate">Food Donation Update</string>
+
+    <string name="home">Home</string>
+    <string name="profile">Profile</string>
+    <string name="more_info">More info</string>
+    <string name="confirm">Confirm</string>
+    <string name="add">Add</string>
+    <string name="create">Create</string>
+    <string name="edit">Edit</string>
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="title_activity_admin_login">AdminLoginActivity</string>
+
+    // Request
+    <string name="food_request">Food Request</string>
+
+    // Wide
+    <string name="sign_in">Sign In</string>
+    <string name="sign_up">Sign Up</string>
+    <string name="welcome_message">Welcome to FoodEase</string>
+    <string name="welcome_message_2">Discover volunteer opportunities and learn how you can make an impact in causes you care about.​ </string>
+    <string name="edit_profile">Edit Profile</string>
+
+    // Volunteer
+    <string name="volunteer_details">Volunteer Details</string>
+
+    // Event
+    <string name="event">Event</string>
+    <string name="event_name">Event Name</string>
+    <string name="description">Description</string>
+    <string name="starting_datetime">Starting Date Time</string>
+    <string name="ending_datetime">Ending Date Time</string>
+    <string name="create_event">Create Event</string>
+    <string name="create_an_event">Create an Event</string>
+    <string name="title">Title</string>
+    <string name="starting_date">Starting Date</string>
+    <string name="venue_address">Venue Address</string>
+    <string name="upload_image">Upload Image</string>
+    <string name="ending_date">Ending Date</string>
+    <string name="volunteer_required">Volunteer Required</string>
+    <string name="delete_event">Delete event</string>
+
+
+    // Donation
+    <string name="food_name">Food Name</string>
+    <string name="food_instruction">Food Instruction</string>
+    <string name="food_description">Food Description</string>
+    <string name="edit_donation">Edit Donation</string>
+
+    // Inventory
+    <string name="inventory">Inventory</string>
+    <string name="inventory_details">Inventory Details</string>
     <string name="inventorycatalog">Inventory Catalog</string>
     <string name="inventorydetail">Inventory Catalog Detail</string>
     <string name="inventoryform">Inventory Catalog Form</string>
     <string name="inventoryupdate">Inventory Catalog Update</string>
-    <string name="home">Home</string>
     <string name="inventoryconfirmation">Inventory Confirmation</string>
-    <string name="event">Event</string>
-    <string name="profile">Profile</string>
-    <string name="more_info">More info</string>
-    <string name="inventory">Inventory</string>
-    <string name="volunteer">Volunteer</string>
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

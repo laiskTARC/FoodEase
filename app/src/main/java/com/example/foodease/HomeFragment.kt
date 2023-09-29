@@ -9,7 +9,9 @@ import android.widget.Button
 import androidx.navigation.fragment.findNavController
 import android.content.Intent
 import android.net.Uri
+import androidx.appcompat.app.AppCompatActivity
 import com.example.foodease.databinding.FragmentHomeBinding
+import com.google.android.material.bottomnavigation.BottomNavigationView
 
 
 class HomeFragment : Fragment() {
@@ -20,6 +22,16 @@ class HomeFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
+
+        // Show the toolbar
+        (activity as AppCompatActivity?)?.supportActionBar?.show()
+
+        // Hide the back button
+        (activity as AppCompatActivity?)?.supportActionBar?.setDisplayHomeAsUpEnabled(false)
+
+        // Show the bottom navigation view
+        val bottomNavigationView = activity?.findViewById<BottomNavigationView>(R.id.bottomNavAdmin)
+        bottomNavigationView?.visibility = View.VISIBLE
 
         _binding = FragmentHomeBinding.inflate(inflater, container, false)
 
@@ -62,6 +74,12 @@ class HomeFragment : Fragment() {
 */
         return binding.root
     }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+    }
+
 
 
 }

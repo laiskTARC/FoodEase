@@ -3,20 +3,23 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/navigation"
-    app:startDestination="@id/homeFragment">
+    app:startDestination="@id/selectLogin">
 
-<!--    <fragment-->
-<!--        android:id="@+id/loginFragment"-->
-<!--        android:name="com.example.foodease.LoginFragment"-->
-<!--        android:label="@string/login"-->
-<!--        tools:layout="@layout/fragment_login">-->
-<!--        <action-->
-<!--            android:id="@+id/action_loginFragment_to_homeFragment"-->
-<!--            app:destination="@id/homeFragment" />-->
-<!--        <action-->
-<!--            android:id="@+id/action_loginFragment_to_registerFragment2"-->
-<!--            app:destination="@id/registerFragment" />-->
-<!--    </fragment>-->
+    <fragment
+        android:id="@+id/loginFragment"
+        android:name="com.example.foodease.LoginFragment"
+        android:label="@string/login"
+        tools:layout="@layout/fragment_login">
+        <action
+            android:id="@+id/action_loginFragment_to_homeFragment"
+            app:destination="@id/homeFragment"
+
+            app:popUpTo="@id/navigation"
+            app:popUpToInclusive="true" />
+        <action
+            android:id="@+id/action_loginFragment_to_registerFragment2"
+            app:destination="@id/registerFragment" />
+    </fragment>
     <fragment
         android:id="@+id/homeFragment"
         android:name="com.example.foodease.HomeFragment"
@@ -31,26 +34,33 @@
         <action
             android:id="@+id/action_homeFragment_to_requestListFragment"
             app:destination="@id/requestListFragment" />
-<!--        <action-->
-<!--            android:id="@+id/action_homeFragment_to_volunteerListFragment"-->
-<!--            app:destination="@id/volunteerListFragment" />-->
-<!--        <action-->
-<!--            android:id="@+id/action_homeFragment_to_eventFragment"-->
-<!--            app:destination="@id/eventFragment" />-->
+        <action
+            android:id="@+id/action_homeFragment_to_volunteerListFragment"
+            app:destination="@id/volunteerListFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_eventFragment"
+            app:destination="@id/eventFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:popEnterAnim="@anim/slide_out_left" />
+        <action
+            android:id="@+id/action_homeFragment_to_profileFragment"
+            app:destination="@id/profileFragment" />
     </fragment>
     <fragment
         android:id="@+id/donationListFragment"
         android:name="com.example.foodease.ui.donation.DonationListFragment"
-        android:label="fragment_donation_list"
+        android:label="Donation"
         tools:layout="@layout/fragment_donation_list" >
         <action
             android:id="@+id/action_donationListFragment_to_donationListDetailFragment"
-            app:destination="@id/donationListDetailFragment" />
+            app:destination="@id/donationListDetailFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:popEnterAnim="@android:anim/slide_in_left" />
     </fragment>
     <fragment
         android:id="@+id/donationListDetailFragment"
         android:name="com.example.foodease.ui.donation.DonationListDetailFragment"
-        android:label="fragment_donation_list_detail"
+        android:label="Donation Details"
         tools:layout="@layout/fragment_donation_list_detail" >
         <action
             android:id="@+id/action_donationListDetailFragment_to_donationListFragment"
@@ -62,28 +72,25 @@
     <fragment
         android:id="@+id/donationListUpdateFragment"
         android:name="com.example.foodease.ui.donation.DonationListUpdateFragment"
-        android:label="fragment_donation_list_update"
-        tools:layout="@layout/fragment_donation_list_update" >
+        android:label="@string/edit_donation"
+        tools:layout="@layout/fragment_donation_list_update">
         <action
             android:id="@+id/action_donationListUpdateFragment_to_donationListDetailFragment"
             app:destination="@id/donationListDetailFragment" />
     </fragment>
     <fragment
         android:id="@+id/inventoryListFragment"
-        android:name="com.example.foodease.ui.inventory.InventoryListFragment"
+        android:name="com.example.foodease.InventoryListFragment"
         android:label="@string/inventory"
         tools:layout="@layout/fragment_inventory_list">
         <action
             android:id="@+id/action_inventoryListFragment_to_inventoryListDetailFragment"
             app:destination="@id/inventoryListDetailFragment" />
-        <action
-            android:id="@+id/action_inventoryListFragment_to_inventoryListAddFragment"
-            app:destination="@id/inventoryListAddFragment" />
     </fragment>
     <fragment
         android:id="@+id/inventoryListDetailFragment"
-        android:name="com.example.foodease.ui.inventory.InventoryListDetailFragment"
-        android:label="fragment_inventory_list_detail"
+        android:name="com.example.foodease.InventoryListDetailFragment"
+        android:label="Inventory Details"
         tools:layout="@layout/fragment_inventory_list_detail" >
         <action
             android:id="@+id/action_inventoryListDetailFragment_to_inventoryListFragment"
@@ -91,16 +98,10 @@
         <action
             android:id="@+id/action_inventoryListDetailFragment_to_inventoryListAddFragment"
             app:destination="@id/inventoryListAddFragment" />
-        <action
-            android:id="@+id/action_inventoryListDetailFragment_to_inventoryListUpdateFragment"
-            app:destination="@id/inventoryListUpdateFragment" />
-        <action
-            android:id="@+id/action_inventoryListDetailFragment_to_inventoryListDeleteFragment"
-            app:destination="@id/inventoryListDeleteFragment" />
     </fragment>
     <fragment
         android:id="@+id/inventoryListAddFragment"
-        android:name="com.example.foodease.ui.inventory.InventoryListAddFragment"
+        android:name="com.example.foodease.InventoryListAddFragment"
         android:label="fragment_inventory_list_add"
         tools:layout="@layout/fragment_inventory_list_add" >
         <action
@@ -109,13 +110,9 @@
     </fragment>
     <fragment
         android:id="@+id/inventoryListUpdateFragment"
-        android:name="com.example.foodease.ui.inventory.InventoryListUpdateFragment"
-        android:label="fragment_inventory_list_update"
-        tools:layout="@layout/fragment_inventory_list_update" >
-        <action
-            android:id="@+id/action_inventoryListUpdateFragment_to_inventoryListDetailFragment"
-            app:destination="@id/inventoryListDetailFragment" />
-    </fragment>
+        android:name="com.example.foodease.InventoryListUpdateFragment"
+        android:label="Inventory Update"
+        tools:layout="@layout/fragment_inventory_list_update" />
     <fragment
         android:id="@+id/requestListFragment"
         android:name="com.example.foodease.RequestListFragment"
@@ -137,7 +134,7 @@
     <fragment
         android:id="@+id/requestListAddFragment"
         android:name="com.example.foodease.RequestListAddFragment"
-        android:label="fragment_request_list_add"
+        android:label="Create Request"
         tools:layout="@layout/fragment_request_list_add" />
     <fragment
         android:id="@+id/requestListUpdateFragment"
@@ -147,79 +144,112 @@
     <fragment
         android:id="@+id/requestListViewFragment"
         android:name="com.example.foodease.RequestListViewFragment"
-        android:label="fragment_request_list_view"
+        android:label="@string/food_request"
         tools:layout="@layout/fragment_request_list_view" />
     <fragment
-        android:id="@+id/inventoryListDeleteFragment"
-        android:name="com.example.foodease.InventoryListDeleteFragment"
-        android:label="fragment_inventory_list_delete"
-        tools:layout="@layout/fragment_inventory_list_delete" />
-    <!--    <fragment-->
-<!--        android:id="@+id/volunteerListFragment"-->
-<!--        android:name="com.example.foodease.ui.volunteer.VolunteerListFragment"-->
-<!--        android:label="Volunteer"-->
-<!--        tools:layout="@layout/fragment_volunteer_list">-->
-<!--        <action-->
-<!--            android:id="@+id/action_volunteerListFragment_to_volunteerListDetailFragment"-->
-<!--            app:destination="@id/volunteerListDetailFragment"-->
-<!--            app:enterAnim="@anim/to_right"-->
-<!--            app:exitAnim="@android:anim/slide_out_right" />-->
-<!--    </fragment>-->
-<!--    <fragment-->
-<!--        android:id="@+id/volunteerListDetailFragment"-->
-<!--        android:name="com.example.foodease.ui.volunteer.VolunteerListDetailFragment"-->
-<!--        android:label="Volunteer Details"-->
-<!--        tools:layout="@layout/fragment_volunteer_list_detail" />-->
-<!--    <fragment-->
-<!--        android:id="@+id/volunteerListAddFragment"-->
-<!--        android:name="com.example.foodease.ui.volunteer.VolunteerListAddFragment"-->
-<!--        android:label="fragment_volunteer_list_add"-->
-<!--        tools:layout="@layout/fragment_volunteer_list_add" />-->
-<!--    <fragment-->
-<!--        android:id="@+id/eventFragment"-->
-<!--        android:name="com.example.foodease.ui.event.EventList"-->
-<!--        android:label="Event"-->
-<!--        tools:layout="@layout/fragment_event_list" >-->
-<!--        <action-->
-<!--            android:id="@+id/action_eventFragment_to_eventDetailFragment"-->
-<!--            app:destination="@id/eventDetailFragment" />-->
-<!--        <action-->
-<!--            android:id="@+id/action_eventFragment_to_eventCreateFragment"-->
-<!--            app:destination="@id/eventCreateFragment"-->
-<!--            app:enterAnim="@anim/to_right"-->
-<!--            app:exitAnim="@android:anim/slide_out_right"-->
-<!--            app:popExitAnim="@android:anim/slide_out_right" />-->
-<!--    </fragment>-->
-<!--    <fragment-->
-<!--        android:id="@+id/selectLogin"-->
-<!--        android:name="com.example.foodease.SelectLoginFragment"-->
-<!--        android:label="SelectLogin" >-->
-<!--        <action-->
-<!--            android:id="@+id/action_selectLogin_to_loginFragment"-->
-<!--            app:destination="@id/loginFragment" />-->
-<!--        <action-->
-<!--            android:id="@+id/action_selectLogin_to_registerFragment"-->
-<!--            app:destination="@id/registerFragment" />-->
-<!--    </fragment>-->
-<!--    <fragment-->
-<!--        android:id="@+id/eventDetailsFragment"-->
-<!--        android:name="com.example.foodease.ui.event.EventDetailsFragment"-->
-<!--        android:label="Event Details"-->
-<!--        tools:layout="@layout/fragment_event_details" />-->
-<!--    <fragment-->
-<!--        android:id="@+id/eventDetailFragment"-->
-<!--        android:name="com.example.foodease.ui.event.EventDetailFragment"-->
-<!--        android:label="Event Details"-->
-<!--        tools:layout="@layout/fragment_event_detail" />-->
-<!--    <fragment-->
-<!--        android:id="@+id/eventCreateFragment"-->
-<!--        android:name="com.example.foodease.ui.event.EventCreateFragment"-->
-<!--        android:label="Create an Event"-->
-<!--        tools:layout="@layout/fragment_event_create" />-->
-<!--    <fragment-->
-<!--        android:id="@+id/registerFragment"-->
-<!--        android:name="com.example.foodease.RegisterFragment"-->
-<!--        android:label="fragment_register"-->
-<!--        tools:layout="@layout/fragment_register" />-->
+        android:id="@+id/volunteerListFragment"
+        android:name="com.example.foodease.ui.volunteer.VolunteerListFragment"
+        android:label="Volunteer"
+        tools:layout="@layout/fragment_volunteer_list">
+        <action
+            android:id="@+id/action_volunteerListFragment_to_volunteerListDetailFragment"
+            app:destination="@id/volunteerListDetailFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:popEnterAnim="@android:anim/slide_in_left" />
+    </fragment>
+    <fragment
+        android:id="@+id/volunteerListDetailFragment"
+        android:name="com.example.foodease.ui.volunteer.VolunteerListDetailFragment"
+        android:label="@string/volunteer_details"
+        tools:layout="@layout/fragment_volunteer_list_detail" />
+    <fragment
+        android:id="@+id/volunteerListAddFragment"
+        android:name="com.example.foodease.ui.volunteer.VolunteerListAddFragment"
+        android:label="fragment_volunteer_list_add"
+        tools:layout="@layout/fragment_volunteer_list_add" />
+    <fragment
+        android:id="@+id/eventFragment"
+        android:name="com.example.foodease.ui.event.EventList"
+        android:label="Event"
+        tools:layout="@layout/fragment_event_list" >
+        <action
+            android:id="@+id/action_eventFragment_to_eventDetailFragment"
+            app:destination="@id/eventDetailFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:popEnterAnim="@android:anim/slide_in_left" />
+        <action
+            android:id="@+id/action_eventFragment_to_eventCreateFragment"
+            app:destination="@id/eventCreateFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:popEnterAnim="@android:anim/slide_in_left" />
+    </fragment>
+    <fragment
+        android:id="@+id/selectLogin"
+        android:name="com.example.foodease.SelectLoginFragment"
+        android:label="SelectLogin" >
+        <action
+            android:id="@+id/action_selectLogin_to_loginFragment"
+            app:destination="@id/loginFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:popEnterAnim="@android:anim/slide_in_left" />
+        <action
+            android:id="@+id/action_selectLogin_to_registerFragment"
+            app:destination="@id/registerFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:popEnterAnim="@android:anim/slide_in_left" />
+    </fragment>
+    <fragment
+        android:id="@+id/eventDetailsFragment"
+        android:name="com.example.foodease.ui.event.EventDetailsFragment"
+        android:label="Event Details"
+        tools:layout="@layout/fragment_event_details" />
+    <fragment
+        android:id="@+id/eventDetailFragment"
+        android:name="com.example.foodease.ui.event.EventDetailFragment"
+        android:label="Event Details"
+        tools:layout="@layout/fragment_event_detail" />
+    <fragment
+        android:id="@+id/eventCreateFragment"
+        android:name="com.example.foodease.ui.event.EventCreateFragment"
+        android:label="Create an Event"
+        tools:layout="@layout/fragment_event_create" />
+    <fragment
+        android:id="@+id/registerFragment"
+        android:name="com.example.foodease.RegisterFragment"
+        android:label="@string/sign_up"
+        tools:layout="@layout/fragment_register">
+        <action
+            android:id="@+id/action_registerFragment_to_loginFragment"
+            app:destination="@id/loginFragment"
+            app:enterAnim="@anim/slide_in_right" />
+    </fragment>
+    <fragment
+        android:id="@+id/profileFragment"
+        android:name="com.example.foodease.ProfileFragment"
+        android:label="@string/profile"
+        tools:layout="@layout/fragment_profile" >
+        <action
+            android:id="@+id/action_profileFragment_to_profileInformationFragment"
+            app:destination="@id/profileInformationFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:popEnterAnim="@android:anim/slide_in_left" />
+        <action
+            android:id="@+id/action_profileFragment_to_selectLogin"
+            app:destination="@id/selectLogin"
+            app:popUpTo="@id/navigation"
+            app:popUpToInclusive="true" />
+    </fragment>
+    <fragment
+        android:id="@+id/profileInformationFragment"
+        android:name="com.example.foodease.ProfileInformationFragment"
+        android:label="Profile Information" />
+    <fragment android:id="@+id/placeholder" >
+        <action
+            android:id="@+id/action_placeholder_to_selectLogin"
+            app:destination="@id/selectLogin" />
+        <action
+            android:id="@+id/action_placeholder_to_homeFragment"
+            app:destination="@id/homeFragment" />
+    </fragment>
 
 </navigation>
