@@ -27,7 +27,7 @@ class VolunteerViewModel(application: Application): AndroidViewModel(application
         //Connect DAO to repository
         repository = VolunteerRepository(contactDao)
         //Retrieve contact records
-        volunteerList = repository.allContacts
+        volunteerList = repository.allVolunteers
 
         _volunteer.value = Volunteer("","","","")
     }

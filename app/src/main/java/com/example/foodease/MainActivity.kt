@@ -12,6 +12,7 @@ import androidx.navigation.findNavController
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.setupActionBarWithNavController
 import com.example.foodease.databinding.ActivityMainBinding
+import com.google.firebase.FirebaseApp
 
 class MainActivity : AppCompatActivity() {
     private lateinit var navController:  NavController
@@ -34,20 +35,15 @@ class MainActivity : AppCompatActivity() {
 
         binding.bottomNavAdmin.setOnItemSelectedListener { item ->
             when (item.itemId) {
-                R.id.itemEvent -> {
-                    // Navigate to the "Event" fragment destination
-                    navController.navigate(R.id.eventFragment)
-                    true
-                }
+//                R.id.itemEvent -> {
+//                    // Navigate to the "Event" fragment destination
+//                    navController.navigate(R.id.eventFragment)
+//                    true
+//                }
 
                 R.id.itemInventory -> {
-                    // Navigate to the "Event" fragment destination
+                    // Navigate to the 'Inventory" fragment destination
                     navController.navigate(R.id.inventoryListFragment)
-                    true
-                }
-
-                R.id.itemVolunteer -> {
-                    navController.navigate(R.id.volunteerListAddFragment)
                     true
                 }
                 // Handle other bottom navigation items similarly

@@ -5,7 +5,7 @@ import androidx.lifecycle.LiveData
 
 class VolunteerRepository(private val volunteerDao: VolunteerDao) {
     //Room execute all queries on a separate thread
-    val allContacts: LiveData<List<Volunteer>> = volunteerDao.getAllVolunteer()
+    val allVolunteers: LiveData<List<Volunteer>> = volunteerDao.getAllVolunteer()
 
     @WorkerThread
     suspend fun insert(contact: Volunteer){

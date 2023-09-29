@@ -7,7 +7,6 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.foodease.entities.Event
-import com.example.foodease.EventAdapter
 
 class EventAdapter : RecyclerView.Adapter<EventAdapter.ViewHolder>(){
 
@@ -16,7 +15,7 @@ class EventAdapter : RecyclerView.Adapter<EventAdapter.ViewHolder>(){
 
     class ViewHolder(view: View):RecyclerView.ViewHolder(view){
         val image : ImageView = view.findViewById(R.id.imageViewEvent)
-        val eventName : TextView = view.findViewById(R.id.textViewEventName)
+        val eventName : TextView = view.findViewById(R.id.textViewInventoryName)
 
 
         init {

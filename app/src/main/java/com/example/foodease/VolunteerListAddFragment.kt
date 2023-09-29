@@ -16,8 +16,7 @@ import com.android.volley.toolbox.StringRequest
 import com.android.volley.toolbox.Volley
 import com.example.foodease.databinding.FragmentHomeBinding
 import com.example.foodease.databinding.FragmentVolunteerListAddBinding
-import com.google.firebase.database.ktx.database
-import com.google.firebase.ktx.Firebase
+
 
 class VolunteerListAddFragment : Fragment() {
 
@@ -40,22 +39,22 @@ class VolunteerListAddFragment : Fragment() {
         return binding.root
     }
 
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
+//    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+//        super.onViewCreated(view, savedInstanceState)
+//
+//        saveData()
+//    }
 
-        saveData()
-    }
-
-    private fun saveData(){
-        val firebaseDatabase = Firebase.database
-        val myRef = firebaseDatabase.getReference("volunteers")
-        with(myRef.child(volunteerViewModel.volunteer.value!!.contact)){
-            child("name").setValue(volunteerViewModel.volunteer.value!!.name)
-            child("email").setValue(volunteerViewModel.volunteer.value!!.email)
-            child("phone").setValue(volunteerViewModel.volunteer.value!!.contact)
-            child("address").setValue(volunteerViewModel.volunteer.value!!.address)
-        }
-    }
+//    private fun saveData(){
+//        val firebaseDatabase = Firebase.database
+//        val myRef = firebaseDatabase.getReference("volunteers")
+//        with(myRef.child(volunteerViewModel.volunteer.value!!.contact)){
+//            child("name").setValue(volunteerViewModel.volunteer.value!!.name)
+//            child("email").setValue(volunteerViewModel.volunteer.value!!.email)
+//            child("phone").setValue(volunteerViewModel.volunteer.value!!.contact)
+//            child("address").setValue(volunteerViewModel.volunteer.value!!.address)
+//        }
+//    }
 
 
 }

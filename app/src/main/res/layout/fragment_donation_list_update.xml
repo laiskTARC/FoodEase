@@ -19,7 +19,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/textView8"
+        android:id="@+id/textViewUpdateId"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
@@ -87,7 +87,7 @@
         app:layout_constraintTop_toBottomOf="@+id/fooddesc" />
 
     <TextView
-        android:id="@+id/instruction"
+        android:id="@+id/Date"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="20dp"
@@ -102,7 +102,7 @@
         app:layout_constraintTop_toBottomOf="@+id/descEditText" />
 
     <EditText
-        android:id="@+id/instructionEditText"
+        android:id="@+id/dateEditText"
         android:layout_width="0dp"
         android:layout_height="48dp"
         android:layout_marginStart="20dp"
@@ -112,10 +112,10 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/instruction" />
+        app:layout_constraintTop_toBottomOf="@+id/Date" />
 
     <EditText
-        android:id="@+id/editTextText"
+        android:id="@+id/quantityEditText"
         android:layout_width="wrap_content"
         android:layout_height="48dp"
         android:layout_marginStart="20dp"
@@ -124,7 +124,7 @@
         android:hint="Quantity"
         android:inputType="text"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/instructionEditText" />
+        app:layout_constraintTop_toBottomOf="@+id/dateEditText" />
 
     <Button
         android:id="@+id/button6"
@@ -134,7 +134,7 @@
         android:layout_marginTop="40dp"
         android:text="Upload Image"
         app:layout_constraintStart_toEndOf="@+id/imageView"
-        app:layout_constraintTop_toBottomOf="@+id/editTextText" />
+        app:layout_constraintTop_toBottomOf="@+id/quantityEditText" />
 
     <Button
         android:id="@+id/buttonUpdate2"
@@ -163,7 +163,7 @@
         android:layout_marginStart="20dp"
         android:layout_marginTop="20dp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextText"
+        app:layout_constraintTop_toBottomOf="@+id/quantityEditText"
         tools:srcCompat="@tools:sample/avatars" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

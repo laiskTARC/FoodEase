@@ -50,7 +50,10 @@ dependencies {
     implementation("androidx.navigation:navigation-fragment-ktx:2.7.2")
     implementation("androidx.navigation:navigation-ui-ktx:2.7.2")
     implementation("com.android.volley:volley:1.2.1")
-    implementation("com.google.firebase:firebase-database-ktx:20.2.2")
+    //implementation("com.google.firebase:firebase-database-ktx:20.2.2")
+    implementation("com.google.firebase:firebase-database:20.0.0") // Use the latest version
+    implementation("androidx.lifecycle:lifecycle-viewmodel:2.3.1") // Use the latest version
+    implementation("androidx.lifecycle:lifecycle-livedata:2.3.1") // Use the latest version
     testImplementation("junit:junit:4.13.2")
     androidTestImplementation("androidx.test.ext:junit:1.1.5")
     androidTestImplementation("androidx.test.espresso:espresso-core:3.5.1")
@@ -64,6 +67,7 @@ dependencies {
     implementation("androidx.room:room-runtime:$room_version")
     // To use Kotlin Symbol Processing (KSP)
     //ksp("androidx.room:room-compiler:$room_version")
+    annotationProcessor("androidx.room:room-compiler:$room_version")
 
     // optional - Kotlin Extensions and Coroutines support for Room
     implementation("androidx.room:room-ktx:$room_version")

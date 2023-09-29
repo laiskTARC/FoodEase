@@ -34,8 +34,8 @@ class EventList : Fragment() {
 
 
 
-        val recyclerViewEvent = binding.recyclerViewEvent
-        recyclerViewEvent.layoutManager = LinearLayoutManager(requireContext())
+//        val recyclerViewEvent = binding.recyclerViewEvent
+//        recyclerViewEvent.layoutManager = LinearLayoutManager(requireContext())
 
         val data = ArrayList<Event>()
 
@@ -47,7 +47,7 @@ class EventList : Fragment() {
         //val textViewE = binding.textView4
         adapter.setEvent(data)
 
-        recyclerViewEvent.adapter = adapter
+        //recyclerViewEvent.adapter = adapter
 
         return binding.root
     }
