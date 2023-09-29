@@ -1,12 +1,11 @@
-package com.example.foodease
+package com.example.foodease.ui.volunteer
 
 import android.app.Application
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.viewModelScope
-import com.example.foodease.database.Volunteer
-import com.example.foodease.database.VolunteerDatabase
-import com.example.foodease.database.VolunteerRepository
+import com.example.foodease.database.volunteer.VolunteerDatabase
+import com.example.foodease.database.volunteer.VolunteerRepository
 import kotlinx.coroutines.launch
 
 class VolunteerViewModel(application: Application): AndroidViewModel(application) {

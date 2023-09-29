@@ -1,9 +1,10 @@
-package com.example.foodease.database
+package com.example.foodease.database.volunteer
 
 import android.content.Context
 import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
+import com.example.foodease.ui.volunteer.Volunteer
 
 @Database(entities = arrayOf(Volunteer::class), version = 1, exportSchema = false)
 abstract class VolunteerDatabase: RoomDatabase() {
