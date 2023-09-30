@@ -88,18 +88,18 @@ class MainActivity : AppCompatActivity() {
 
         navController.addOnDestinationChangedListener { _, destination, _ ->
             val user = FirebaseAuth.getInstance().currentUser
-                if (user == null && destination.id !in allowedDestinations) {
-                    Log.i("firebase", "Auth Fuin $user")
-                    // User is trying to navigate to a restricted destination
-                    // Navigate them back to the login fragment
-                    navController.navigate(R.id.selectLogin)
-                    // Display a message or perform any other action
-                    Toast.makeText(this, "Access Denied", Toast.LENGTH_SHORT).show()
-                }
+            if (user == null && destination.id !in allowedDestinations) {
+                Log.i("firebase", "Auth Fuin $user")
+                // User is trying to navigate to a restricted destination
+                // Navigate them back to the login fragment
+                navController.navigate(R.id.selectLogin)
+                // Display a message or perform any other action
+                Toast.makeText(this, "Access Denied", Toast.LENGTH_SHORT).show()
+            }
 
             else if(user != null && destination.id in allowedDestinations){
                     navController.navigate(R.id.homeFragment)
-                }
+            }
 
         }
 

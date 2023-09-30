@@ -62,7 +62,7 @@
                     android:id="@+id/imageView5"
                     android:layout_width="20dp"
                     android:layout_height="25dp"
-                    app:srcCompat="@drawable/baseline_place_24" />
+                    app:srcCompat="@drawable/baseline_production_quantity_limits_24" />
 
                 <TextView
                     android:id="@+id/textViewInventoryQuantity"

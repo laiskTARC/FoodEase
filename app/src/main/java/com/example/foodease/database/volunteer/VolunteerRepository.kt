@@ -6,7 +6,7 @@ import com.example.foodease.ui.volunteer.Volunteer
 
 class VolunteerRepository(private val volunteerDao: VolunteerDao) {
     //Room execute all queries on a separate thread
-    val allVolunteers: LiveData<List<Volunteer>> = volunteerDao.getAllVolunteer()
+    val allContacts: LiveData<List<Volunteer>> = volunteerDao.getAllVolunteer()
 
     @WorkerThread
     suspend fun insert(contact: Volunteer){

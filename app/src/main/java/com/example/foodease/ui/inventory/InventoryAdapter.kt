@@ -77,4 +77,9 @@ class InventoryAdapter(private val inventoryList: ArrayList<Inventory>): Recycle
 
     }
 
+    fun searchInventoryList(searchList: List<Inventory>){
+        dataList = searchList
+        notifyDataSetChanged()
+    }
+
 }

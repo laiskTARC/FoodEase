@@ -27,22 +27,24 @@ class InventoryListAddFragment : Fragment() {
         // Inflate the layout for this fragment
         binding = FragmentInventoryListAddBinding.inflate(inflater, container, false)
 
-        //inventoryViewModel = ViewModelProvider(this).get(InventoryViewModel::class.java)
-
         dbRef = FirebaseDatabase.getInstance().getReference("inventory")
 
         binding.buttonSubmitInventory.setOnClickListener {
             insertInventoryToDatabase()
         }
 
+        binding.buttonBackInventory.setOnClickListener {
+            findNavController().navigateUp()
+        }
+
         return binding.root
     }
 
     private fun insertInventoryToDatabase(){
-        val inventoryName = binding.foodnameEditText.text.toString()
-        val inventoryDesc = binding.descEditText.text.toString()
-        val inventoryDate = binding.dateEditText.text.toString()
-        val inventoryQuantity = binding.quantityEditText.text.toString()
+        val inventoryName = binding.editTextFoodName.text.toString()
+        val inventoryDesc = binding.editTextFoodDesc.text.toString()
+        val inventoryDate = binding.editTextExpiryDate.text.toString()
+        val inventoryQuantity = binding.editTextQuantity.text.toString()
 
         Log.d(TAG, "Inventory Name: $inventoryName")
         Log.d(TAG, "Inventory Description: $inventoryDesc")
@@ -68,18 +70,18 @@ class InventoryListAddFragment : Fragment() {
                 findNavController().navigateUp()
             }
 
-//            val inventoryItem = Inventory(
-//                name = inventoryName,
-//                description = inventoryDesc,
-//                date = inventoryDate,
-//                quantity = inventoryQuantity)
-//
-//            if(inventoryItem != null){
-//                inventoryViewModel.insert(inventoryItem)
-//                Log.d(TAG, "Inventory added successfully to Room Database")
-//            }else{
-//                Log.d(TAG, "Inventory failed to added to Room Database")
-//            }
+            val inventoryItem = Inventory(
+                name = inventoryName,
+                description = inventoryDesc,
+                date = inventoryDate,
+                quantity = inventoryQuantity)
+
+            if(inventoryItem != null){
+                inventoryViewModel.insert(inventoryItem)
+                Log.d(TAG, "Inventory added successfully to Room Database")
+            }else{
+                Log.d(TAG, "Inventory failed to added to Room Database")
+            }
 
 
         }

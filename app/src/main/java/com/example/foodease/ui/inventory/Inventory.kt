@@ -5,8 +5,8 @@ import androidx.room.PrimaryKey
 
 @Entity("inventory")
 data class Inventory (
-    @PrimaryKey(autoGenerate = true)
-    var id: String? = null,
+    @PrimaryKey
+    var id: String = "",
     var name:String? = null,
     var description: String? = null,
     var date: String? = null,

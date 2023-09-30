@@ -26,8 +26,8 @@ import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.ValueEventListener
-import com.google.firebase.database.ktx.database
-import com.google.firebase.ktx.Firebase
+//import com.google.firebase.database.ktx.database
+//import com.google.firebase.ktx.Firebase
 
 class EventList : Fragment(), EventClickListener {
 
@@ -61,33 +61,33 @@ class EventList : Fragment(), EventClickListener {
         val name = ""
 
         // Remote Database
-        val firebaseDatabase = Firebase.database
+//        val firebaseDatabase = Firebase.database
 
-        val ref = firebaseDatabase.getReference("events")
+//        val ref = firebaseDatabase.getReference("events")
 
-        ref.addValueEventListener(object : ValueEventListener{
-            override fun onDataChange(snapshot: DataSnapshot) {
-                if(snapshot.exists()){
-                    for(snapshot in snapshot.children){
-                        val event = snapshot.getValue(Event::class.java)
-                        data.add(event!!)
-                    }
-
-                    val adapter = EventAdapter(this@EventList)
-                    //val textViewE = binding.textView4
-                    adapter.setEvent(data)
-
-                    recyclerViewEvent.adapter = adapter
-
-                    progressDialog.dismiss()
-                }
-            }
-
-            override fun onCancelled(error: DatabaseError) {
-                // Handle onCancelled event (e.g., log the error)
-                Log.e("FirebaseError", "Database operation cancelled: ${error.message}")
-            }
-        })
+//        ref.addValueEventListener(object : ValueEventListener{
+//            override fun onDataChange(snapshot: DataSnapshot) {
+//                if(snapshot.exists()){
+//                    for(snapshot in snapshot.children){
+//                        val event = snapshot.getValue(Event::class.java)
+//                        data.add(event!!)
+//                    }
+//
+//                    val adapter = EventAdapter(this@EventList)
+//                    //val textViewE = binding.textView4
+//                    adapter.setEvent(data)
+//
+//                    recyclerViewEvent.adapter = adapter
+//
+//                    progressDialog.dismiss()
+//                }
+//            }
+//
+//            override fun onCancelled(error: DatabaseError) {
+//                // Handle onCancelled event (e.g., log the error)
+//                Log.e("FirebaseError", "Database operation cancelled: ${error.message}")
+//            }
+//        })
 
 
 

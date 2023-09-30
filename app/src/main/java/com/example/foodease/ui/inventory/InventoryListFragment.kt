@@ -5,18 +5,25 @@ import android.os.Bundle
 import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
+import android.view.Menu
+import android.view.MenuInflater
+import android.view.MenuItem
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
+import androidx.appcompat.widget.SearchView
 import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.foodease.R
+import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
+import com.google.firebase.database.Query
 import com.google.firebase.database.ValueEventListener
 
 
@@ -41,12 +48,31 @@ class InventoryListFragment : Fragment(){
         inventoryList = ArrayList<Inventory>()
         //val name = ""
 
+        (activity as AppCompatActivity?)?.supportActionBar?.setDisplayHomeAsUpEnabled(false)
+
+        setHasOptionsMenu(true)
 
         getInventoryData()
 
+        val searchInventory = view.findViewById<SearchView>(R.id.searchInventory)
 
-        val buttonAdd = view.findViewById<Button>(R.id.buttonAddInventory)
-        //val buttonView = view.findViewById<Button>(R.id.buttonViewInventory)
+
+
+        searchInventory.setOnQueryTextListener(object: SearchView.OnQueryTextListener{
+            override fun onQueryTextSubmit(query: String?): Boolean{
+                return false
+            }
+
+            override fun onQueryTextChange(newText: String): Boolean {
+                searchList(newText)
+                return true
+            }
+
+
+        })
+
+
+        val buttonAdd = view.findViewById<FloatingActionButton>(R.id.buttonAddInventory)
 
         buttonAdd.setOnClickListener {
             findNavController().navigate(R.id.action_inventoryListFragment_to_inventoryListAddFragment)
@@ -112,6 +138,22 @@ class InventoryListFragment : Fragment(){
         // Navigate to the detail fragment with the provided arguments
         findNavController().navigate(R.id.action_inventoryListFragment_to_inventoryListDetailFragment, args)
     }
+
+    fun searchList(text: String){
+        val searchList = ArrayList<Inventory>()
+        for(inventory in inventoryList){
+            if(inventory.name?.lowercase()?.contains(text.lowercase()) == true){
+                searchList.add(inventory)
+            }
+
+        }
+
+        val inventoryAdapter = InventoryAdapter(searchList)
+        inventoryAdapter.searchInventoryList(searchList)
+        inventoryRecyclerView.adapter = inventoryAdapter
+    }
+
+
 
 
 }

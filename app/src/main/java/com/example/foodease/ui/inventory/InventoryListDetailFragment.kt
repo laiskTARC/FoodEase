@@ -23,6 +23,7 @@ class InventoryListDetailFragment : Fragment() {
     private lateinit var inventoryDate: TextView
     private lateinit var btnUpdate: Button
     private lateinit var btnDelete: Button
+    private lateinit var btnBack: Button
 
 
     override fun onCreateView(
@@ -40,6 +41,7 @@ class InventoryListDetailFragment : Fragment() {
 
         btnUpdate = view.findViewById(R.id.btnUpdate)
         btnDelete = view.findViewById(R.id.btnDelete)
+        btnBack = view.findViewById(R.id.btnBack)
 
         val args = arguments
         if (args != null) {
@@ -49,7 +51,7 @@ class InventoryListDetailFragment : Fragment() {
             val inventoryQuantity = args.getString("InventoryQuantity")
             val inventoryDate = args.getString("InventoryDate")
 
-            // Find TextViews in your fragment layout and set the data
+            // Find TextViews in fragment layout and set the data
             val idTextView = view.findViewById<TextView>(R.id.textViewInventoryId2)
             val nameTextView = view.findViewById<TextView>(R.id.textViewInventoryName2)
             val descTextView = view.findViewById<TextView>(R.id.textViewInventoryDesc2)
@@ -61,6 +63,10 @@ class InventoryListDetailFragment : Fragment() {
             descTextView.text = "$inventoryDesc"
             quantityTextView.text = "$inventoryQuantity"
             dateTextView.text = "$inventoryDate"
+        }
+
+        btnBack.setOnClickListener {
+            findNavController().navigateUp()
         }
 
         btnUpdate.setOnClickListener {
@@ -86,28 +92,16 @@ class InventoryListDetailFragment : Fragment() {
             // Remove the inventory item with the given ID from Firebase
             databaseReference.child(inventoryIdValue).removeValue().addOnSuccessListener {
                 // Deletion successful
-                // You can navigate to another fragment or perform any other action
                 findNavController().navigateUp()
                 Toast.makeText(requireContext(), "The inventory deleted", Toast.LENGTH_LONG).show()
                 Log.d(ContentValues.TAG, "Inventory deleted successfully")
             }.addOnFailureListener {
                 // Handle deletion failure
-                // You can display an error message or take appropriate action
                 Log.e(ContentValues.TAG, "Failed to delete inventory: ${it.message}")
             }
         }
 
-
-
-
-
         return view
     }
-
-
-
-
-
-
 
 }

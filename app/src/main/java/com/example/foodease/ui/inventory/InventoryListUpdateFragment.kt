@@ -2,6 +2,7 @@ package com.example.foodease.ui.inventory
 
 import android.content.ContentValues
 import android.os.Bundle
+import android.text.TextUtils
 import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -11,6 +12,7 @@ import android.widget.Button
 import android.widget.EditText
 import android.widget.TextView
 import android.widget.Toast
+import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
 import com.example.foodease.R
 import com.google.firebase.database.DatabaseReference
@@ -26,7 +28,7 @@ class InventoryListUpdateFragment : Fragment() {
     private lateinit var btnSaveUpdate: Button
     private lateinit var btnUpdateBack: Button
     private lateinit var dbRef: DatabaseReference
-
+    private val inventoryViewModel: InventoryViewModel by activityViewModels()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -58,17 +60,13 @@ class InventoryListUpdateFragment : Fragment() {
             Log.d(ContentValues.TAG, "Inventory ID: $inventoryQuantity")
             Log.d(ContentValues.TAG, "Inventory ID: $inventoryDate")
 
-            // Find TextViews in your fragment layout and set the data
+            // Find TextViews in  fragment layout and set the data
 
             updatedId.text = "$inventoryId"
             updatedName.setText(inventoryName)
             updatedDesc.setText(inventoryDesc)
             updatedQuantity.setText(inventoryQuantity)
             updatedDate.setText(inventoryDate)
-
-
-
-
 
         }
 
@@ -78,48 +76,65 @@ class InventoryListUpdateFragment : Fragment() {
             val quantity = updatedQuantity.text.toString()
             val date = updatedDate.text.toString()
 
-            val inventory = mapOf(
-                "name" to name,
-                "description" to desc,
-                "quantity" to quantity,
-                "date" to date
+            if(inputValidate(name, desc, date, quantity)) {
 
-            )
+                val inventory = mapOf(
+                    "name" to name,
+                    "description" to desc,
+                    "quantity" to quantity,
+                    "date" to date
+
+                )
 
 
-            val inventoryId = args?.getString("InventoryId")
-            if(inventoryId != null){
-                dbRef.child(inventoryId).updateChildren(inventory).addOnSuccessListener {
+                val inventoryId = args?.getString("InventoryId")
+                if (inventoryId != null) {
+                    dbRef.child(inventoryId).updateChildren(inventory).addOnSuccessListener {
+                        Toast.makeText(
+                            requireContext(),
+                            "Inventory updated successful",
+                            Toast.LENGTH_LONG
+                        ).show()
+                        findNavController().navigate(R.id.action_inventoryListUpdateFragment_to_inventoryListFragment)
 
-                    findNavController().navigate(R.id.action_inventoryListUpdateFragment_to_inventoryListDetailFragment)
-                    Toast.makeText(requireContext(), "Inventory updated successful", Toast.LENGTH_SHORT)
-                }.addOnFailureListener{
-                    findNavController().navigate(R.id.action_inventoryListUpdateFragment_to_inventoryListDetailFragment)
-                    Toast.makeText(requireContext(), "Fail to update inventory", Toast.LENGTH_SHORT)
+                    }.addOnFailureListener {
+                        Toast.makeText(
+                            requireContext(),
+                            "Fail to update inventory",
+                            Toast.LENGTH_LONG
+                        ).show()
+                        findNavController().navigate(R.id.action_inventoryListUpdateFragment_to_inventoryListFragment)
+
+                    }
+
+                    val inventoryItem = Inventory(
+                        name = name,
+                        description = desc,
+                        date = date,
+                        quantity = quantity)
+
+                    if(inventoryItem != null){
+                        inventoryViewModel.update(inventoryItem)
+                        Log.d(ContentValues.TAG, "Inventory updated successfully to Room Database")
+                    }else{
+                        Log.d(ContentValues.TAG, "Inventory failed to update to Room Database")
+                    }
                 }
+
+            }else{
+                Toast.makeText(requireContext(), "Fill up the required field", Toast.LENGTH_LONG).show()
             }
 
 
         }
-
-
-
-
-
         btnUpdateBack.setOnClickListener {
-            findNavController().navigate(R.id.action_inventoryListUpdateFragment_to_inventoryListDetailFragment)
+            findNavController().navigate(R.id.action_inventoryListUpdateFragment_to_inventoryListFragment)
         }
-
-
-
-
-
-
-
-
-
-
         return view
+    }
+
+    private fun inputValidate(name: String, desc: String, date: String, quantity: String): Boolean{
+        return !TextUtils.isEmpty(name) && !TextUtils.isEmpty(desc) && !TextUtils.isEmpty(date) && !TextUtils.isEmpty(quantity)
     }
 
 
