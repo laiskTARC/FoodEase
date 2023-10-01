@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".RequestListUpdateFragment">
+    tools:context=".ui.request.RequestListUpdateFragment">
 
     <!-- TODO: Update blank fragment layout -->
     <TextView
@@ -80,7 +80,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/emailEditText2" />
+        app:layout_constraintTop_toBottomOf="@+id/numberEditText" />
 
     <TextView
         android:id="@+id/emailTitleTextView5"
@@ -96,7 +96,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/emailEditText7" />
+        app:layout_constraintTop_toBottomOf="@+id/AddressEditText7" />
 
     <EditText
         android:id="@+id/emailEditText"
@@ -115,7 +115,7 @@
         app:layout_constraintTop_toBottomOf="@+id/emailTitleTextView" />
 
     <EditText
-        android:id="@+id/emailEditText2"
+        android:id="@+id/numberEditText"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="20dp"
@@ -131,7 +131,7 @@
         app:layout_constraintTop_toBottomOf="@+id/emailTitleTextView2" />
 
     <EditText
-        android:id="@+id/emailEditText7"
+        android:id="@+id/AddressEditText7"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="20dp"
@@ -147,7 +147,7 @@
         app:layout_constraintTop_toBottomOf="@+id/emailTitleTextView4" />
 
     <EditText
-        android:id="@+id/emailEditText8"
+        android:id="@+id/peopleEditText"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="20dp"
@@ -163,7 +163,7 @@
         app:layout_constraintTop_toBottomOf="@+id/emailTitleTextView5" />
 
     <Button
-        android:id="@+id/button"
+        android:id="@+id/Requestbutton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"

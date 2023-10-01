@@ -1,13 +1,13 @@
-package com.example.foodease
+package com.example.foodease.ui.request
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
+import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
-
+import com.example.foodease.R
 
 class RequestListFragment : Fragment() {
 
@@ -21,8 +21,14 @@ class RequestListFragment : Fragment() {
 
         val assistanceDetail = view.findViewById<Button>(R.id.assistanceDetail)
 
+        val addrequestButton = view.findViewById<Button>(R.id.addrequestbtn)
+
         assistanceDetail.setOnClickListener {
             findNavController().navigate(R.id.action_requestListFragment_to_requestListDetailFragment)
+        }
+
+        addrequestButton.setOnClickListener {
+            findNavController().navigate(R.id.action_requestListFragment_to_requestListAddFragment)
         }
 
         return view
