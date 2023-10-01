@@ -113,16 +113,19 @@
         tools:layout="@layout/fragment_inventory_list_update" />
     <fragment
         android:id="@+id/requestListFragment"
-        android:name="com.example.foodease.RequestListFragment"
+        android:name="com.example.foodease.ui.request.RequestListFragment"
         android:label="fragment_request_list"
         tools:layout="@layout/fragment_request_list" >
         <action
             android:id="@+id/action_requestListFragment_to_requestListDetailFragment"
             app:destination="@id/requestListDetailFragment" />
+        <action
+            android:id="@+id/action_requestListFragment_to_requestListAddFragment"
+            app:destination="@id/requestListAddFragment" />
     </fragment>
     <fragment
         android:id="@+id/requestListDetailFragment"
-        android:name="com.example.foodease.RequestListDetailFragment"
+        android:name="com.example.foodease.ui.request.RequestListDetailFragment"
         android:label="fragment_request_list_detail"
         tools:layout="@layout/fragment_request_list_detail" >
         <action
@@ -131,17 +134,17 @@
     </fragment>
     <fragment
         android:id="@+id/requestListAddFragment"
-        android:name="com.example.foodease.RequestListAddFragment"
+        android:name="com.example.foodease.ui.request.RequestListAddFragment"
         android:label="fragment_request_list_add"
         tools:layout="@layout/fragment_request_list_add" />
     <fragment
         android:id="@+id/requestListUpdateFragment"
-        android:name="com.example.foodease.RequestListUpdateFragment"
+        android:name="com.example.foodease.ui.request.RequestListUpdateFragment"
         android:label="fragment_request_list_update"
         tools:layout="@layout/fragment_request_list_update" />
     <fragment
         android:id="@+id/requestListViewFragment"
-        android:name="com.example.foodease.RequestListViewFragment"
+        android:name="com.example.foodease.ui.request.RequestListViewFragment"
         android:label="fragment_request_list_view"
         tools:layout="@layout/fragment_request_list_view" />
     <fragment

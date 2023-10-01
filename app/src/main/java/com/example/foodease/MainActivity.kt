@@ -86,7 +86,7 @@ class MainActivity : AppCompatActivity() {
 
         }
 
-        navController.addOnDestinationChangedListener { _, destination, _ ->
+        /*navController.addOnDestinationChangedListener { _, destination, _ ->
             val user = FirebaseAuth.getInstance().currentUser
                 if (user == null && destination.id !in allowedDestinations) {
                     Log.i("firebase", "Auth Fuin $user")
@@ -101,7 +101,7 @@ class MainActivity : AppCompatActivity() {
                     navController.navigate(R.id.homeFragment)
                 }
 
-        }
+        }*/
 
 
     }

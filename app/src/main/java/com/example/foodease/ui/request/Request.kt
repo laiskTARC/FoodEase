@@ -5,10 +5,10 @@ import androidx.room.PrimaryKey
 @Entity("request")
 data class Request (
     @PrimaryKey
-    val id: String = "",
-    val email: String = "",
-    val number: String = "",
-    val address : String = "",
-    val people : String = "",
-    val dietary : String = ""
+    var id: String = "",
+    var email: String = "",
+    var number: String = "",
+    var address : String = "",
+    var people : String = "",
+    var dietary : String = ""
 )

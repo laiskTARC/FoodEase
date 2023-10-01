@@ -66,12 +66,14 @@ class HomeFragment : Fragment() {
         requestButton.setOnClickListener {
             findNavController().navigate(R.id.action_homeFragment_to_donationListFragment)
         }
-
-        val volunteerButton = view.findViewById<Button>(R.id.volunteerButton)
-        volunteerButton.setOnClickListener {
-            findNavController().navigate(R.id.action_homeFragment_to_donationListFragment)
-        }
 */
+
+        val donationButton = binding.requestButton
+        donationButton.setOnClickListener {
+            findNavController().navigate(R.id.action_homeFragment_to_requestListFragment)
+        }
+
+
         return binding.root
     }
 

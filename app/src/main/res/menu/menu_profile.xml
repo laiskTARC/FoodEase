@@ -5,6 +5,6 @@
     <item
         android:id="@+id/itemEditProfile"
         android:icon="@drawable/baseline_edit_note_24"
-        android:title="@string/edit_profile"
+        android:title="edit_profile"
         app:showAsAction="always" />
 </menu>
