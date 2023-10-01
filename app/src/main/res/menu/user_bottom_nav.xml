@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item android:title="Donation"
+        android:id="@+id/donation"
+        android:icon="@drawable/food_request"/>
+    <item android:title="Request"
+        android:id="@+id/request"
+        android:icon="@drawable/food_donation"/>
+    <item android:title="Inventory"
+        android:id="@+id/inventory"
+        android:icon="@drawable/inventory"/>
+    <item android:title="Volunteer"
+        android:id="@+id/volunteer"
+        android:icon="@drawable/volunteer"/>
+</menu>

@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/itemAllVolunteer"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:title="All" />
+    <item
+        android:id="@+id/itemIncoming"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:title="Incoming" />
+    <item
+        android:id="@+id/itemAccepted"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:title="Accepted" />
+    <item
+        android:id="@+id/itemRejected"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:title="Rejected" />
+</menu>

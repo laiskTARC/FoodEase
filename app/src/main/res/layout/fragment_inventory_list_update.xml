@@ -115,7 +115,7 @@
         app:layout_constraintTop_toBottomOf="@+id/instruction" />
 
     <EditText
-        android:id="@+id/editTextText"
+        android:id="@+id/editTextTextQuatity"
         android:layout_width="wrap_content"
         android:layout_height="48dp"
         android:layout_marginStart="20dp"
@@ -133,7 +133,7 @@
         android:layout_marginStart="20dp"
         android:layout_marginTop="20dp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextText"
+        app:layout_constraintTop_toBottomOf="@+id/editTextTextQuatity"
         tools:srcCompat="@tools:sample/avatars" />
 
     <Button
@@ -144,7 +144,7 @@
         android:layout_marginTop="40dp"
         android:text="Upload Image"
         app:layout_constraintStart_toEndOf="@+id/imageView"
-        app:layout_constraintTop_toBottomOf="@+id/editTextText" />
+        app:layout_constraintTop_toBottomOf="@+id/editTextTextQuatity" />
 
     <Button
         android:id="@+id/button7"
