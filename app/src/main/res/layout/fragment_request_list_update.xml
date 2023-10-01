@@ -64,7 +64,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/emailEditText" />
+        app:layout_constraintTop_toBottomOf="@+id/AddressEditText" />
 
     <TextView
         android:id="@+id/emailTitleTextView4"
@@ -80,7 +80,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/numberEditText" />
+        app:layout_constraintTop_toBottomOf="@+id/numberText" />
 
     <TextView
         android:id="@+id/emailTitleTextView5"
@@ -96,10 +96,10 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/AddressEditText7" />
+        app:layout_constraintTop_toBottomOf="@+id/AddressText" />
 
     <EditText
-        android:id="@+id/emailEditText"
+        android:id="@+id/AddressEditText"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="20dp"
@@ -115,7 +115,7 @@
         app:layout_constraintTop_toBottomOf="@+id/emailTitleTextView" />
 
     <EditText
-        android:id="@+id/numberEditText"
+        android:id="@+id/numberText"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="20dp"
@@ -131,7 +131,7 @@
         app:layout_constraintTop_toBottomOf="@+id/emailTitleTextView2" />
 
     <EditText
-        android:id="@+id/AddressEditText7"
+        android:id="@+id/AddressText"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="20dp"
@@ -147,7 +147,7 @@
         app:layout_constraintTop_toBottomOf="@+id/emailTitleTextView4" />
 
     <EditText
-        android:id="@+id/peopleEditText"
+        android:id="@+id/peopleText"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="20dp"

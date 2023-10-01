@@ -72,34 +72,3 @@ class RequestListAddFragment : Fragment() {
 
     // Rest of your code...
 }
-
-/*
-myButton.setOnClickListener {
-            // Get user input from EditText fields
-            val email = view.findViewById<EditText>(R.id.emailEditText).text.toString()
-            val number = view.findViewById<EditText>(R.id.numberEditText).text.toString()
-            val address = view.findViewById<EditText>(R.id.AddressEditText7).text.toString()
-            val people = view.findViewById<EditText>(R.id.peopleEditText).text.toString()
-            val dietary = view.findViewById<EditText>(R.id.dietaryEditText9).text.toString()
-
-            // Check if any of the fields is empty
-            if (email.isEmpty() || number.isEmpty() || address.isEmpty() || people.isEmpty() || dietary.isEmpty()) {
-                Log.d("Firebase", "One or more fields are empty")
-                return@setOnClickListener
-            }
-
-            Log.d("!!!!!!!!", "Attempting to add request to Firebase")
-            // Push the new request to the Firebase Realtime Database
-            val id = keyid.push().key!!
-            val request = Request(id, email, number, address, people, dietary)
-            keyid.child(id).setValue(request).addOnSuccessListener {
-                Snackbar.make(view, "Saved", Snackbar.LENGTH_SHORT).show()
-                Log.d("Firebase", "Request added successfully")
-
-                // You can navigate to another fragment here if needed
-            }.addOnFailureListener {
-                Snackbar.make(view, "Failed", Snackbar.LENGTH_SHORT).show()
-                Log.e("Firebase", "Error adding request: ${it.message}")
-            }
-        }
-*/
