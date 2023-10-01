@@ -1,11 +1,18 @@
 package com.example.foodease.ui.event
 
+import android.content.Context
+import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
+import android.provider.OpenableColumns
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.activity.result.ActivityResultLauncher
+import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.fragment.findNavController
 import com.example.foodease.R
@@ -16,6 +23,7 @@ import com.google.firebase.database.ktx.database
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.ktx.Firebase
 import com.google.firebase.storage.StorageReference
+//import com.bumptech.glide.Glide
 
 class EventCreateFragment : Fragment() {
 
@@ -50,6 +58,17 @@ class EventCreateFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         val buttonCreate = binding.buttonCreateEvent
+        val buttonSelectImage = binding.buttonSelectImage
+
+        buttonSelectImage.setOnClickListener {
+            // PICK INTENT picks item from data
+            // and returned selected item
+            val galleryIntent = Intent(Intent.ACTION_PICK)
+            // here item is type of image
+            galleryIntent.type = "image/*"
+            // ActivityResultLauncher callback
+            imagePickerActivityResult.launch(galleryIntent)
+        }
 
         buttonCreate.setOnClickListener{
             val eventName = binding.editTextEventName.text.toString().trim()
@@ -58,7 +77,7 @@ class EventCreateFragment : Fragment() {
             val endDate = binding.editTextStartingDate.text.toString().trim()
             val venue = binding.editTextVenueAddress.text.toString().trim()
             val editTextVolunteerRequired = binding.editTextVolunteerRequired.text.toString().trim()
-            val volunteerRequired = 0
+            val volunteerRequired = editTextVolunteerRequired.toInt()
 
             //Validate Event Name
             if (eventName.isEmpty()){
@@ -116,5 +135,56 @@ class EventCreateFragment : Fragment() {
         val bottomNavigationView = activity?.findViewById<BottomNavigationView>(R.id.bottomNavAdmin)
         bottomNavigationView?.visibility = View.VISIBLE
         (activity as AppCompatActivity?)?.supportActionBar?.setDisplayHomeAsUpEnabled(false)
+    }
+
+    private var imagePickerActivityResult: ActivityResultLauncher<Intent> =
+    // lambda expression to receive a result back, here we
+        // receive single item(photo) on selection
+        registerForActivityResult( ActivityResultContracts.StartActivityForResult()) { result ->
+            if (result != null) {
+                // getting URI of selected Image
+                val imageUri: Uri? = result.data?.data
+
+                // val fileName = imageUri?.pathSegments?.last()
+
+                // extract the file name with extension
+                val sd = getFileName(requireContext(), imageUri!!)
+
+                // Upload Task with upload to directory 'file'
+                // and name of the file remains same
+                val uploadTask = storageRef.child("file/$sd").putFile(imageUri)
+
+                // On success, download the file URL and display it
+                uploadTask.addOnSuccessListener {
+                    // using glide library to display the image
+                    storageRef.child("upload/$sd").downloadUrl.addOnSuccessListener {
+                        /*
+                        Glide.with(this)
+                            .load(it)
+                            .into(imageview)*/
+
+                        Log.e("Firebase", "download passed")
+                    }.addOnFailureListener {
+                        Log.e("Firebase", "Failed in downloading")
+                    }
+                }.addOnFailureListener {
+                    Log.e("Firebase", "Image Upload fail")
+                }
+            }
+        }
+
+    private fun getFileName(context: Context, uri: Uri): String? {
+        if (uri.scheme == "content") {
+            val cursor = context.contentResolver.query(uri, null, null, null, null)
+            cursor.use {
+                if (cursor != null && cursor.moveToFirst()) {
+                    val displayNameIndex = cursor.getColumnIndex(OpenableColumns.DISPLAY_NAME)
+                    if (displayNameIndex != -1) {
+                        return cursor.getString(displayNameIndex)
+                    }
+                }
+            }
+        }
+        return uri.path?.substringAfterLast('/') // Fallback if DISPLAY_NAME is not available
     }
 }

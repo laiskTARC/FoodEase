@@ -5,7 +5,6 @@
     <string name="password">Passwword</string>
     <string name="confirm_password">Confirm Password</string>
     <string name="email">Email</string>
-    <string name="welcome">Welcome</string>
 
 
     <string name="register_messag">Don\'t have an Account? Register Here</string>

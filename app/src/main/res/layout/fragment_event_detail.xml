@@ -47,6 +47,8 @@
                     android:id="@+id/editTextEventName"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:background="@drawable/edit_text_border"
                     android:ems="10"
                     android:inputType="text"
                     android:padding="10dp"

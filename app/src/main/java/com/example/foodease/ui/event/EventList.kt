@@ -114,6 +114,7 @@ class EventList : Fragment(), EventClickListener {
 
         menu.findItem(R.id.itemEditEvent).setVisible(false)
         menu.findItem(R.id.itemEditEventConfirm).setVisible(false)
+        menu.findItem(R.id.itemDeleteEvent).setVisible(false)
     }
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
 

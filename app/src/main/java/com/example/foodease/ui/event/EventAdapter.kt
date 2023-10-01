@@ -19,6 +19,8 @@ class EventAdapter (private val eventClickListener: EventClickListener) : Recycl
         val image : ImageView = view.findViewById(R.id.imageViewEvent)
         val eventId : TextView = view.findViewById(R.id.textViewEventId)
         val eventName : TextView = view.findViewById(R.id.textViewEventName)
+        val venue : TextView = view.findViewById(R.id.textViewVenue)
+        val date : TextView = view.findViewById(R.id.textViewDate)
 
 
         init {
@@ -49,6 +51,9 @@ class EventAdapter (private val eventClickListener: EventClickListener) : Recycl
         val event = dataList[position]
         holder.eventId.text = event.id
         holder.eventName.text = event.name
+        holder.venue.text = event.venueAddress
+        holder.date.text = event.startingDate + " - " + event.endingDate
+
 
 
         val button = holder.itemView.findViewById<Button>(R.id.buttonViewEvent)
