@@ -9,30 +9,26 @@ import androidx.navigation.findNavController
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import com.example.foodease.R
+import com.example.foodease.ui.event.Event
 import com.google.android.material.snackbar.Snackbar
 
-class DonationAdapter() :
+class DonationAdapter(private val onItemClick: (Donation) -> Unit) :
     RecyclerView.Adapter<DonationAdapter.ViewHolder>(){
 
-    var onItemClick: ((Donation) -> Unit)? = null
     //private val dataSet: List<Donation>
     var dataSet = emptyList<Donation>()
 
     inner class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
 
         val donationName : TextView = view.findViewById(R.id.textViewCardDonationName)
+        //val donationInstruction : TextView = view.findViewById(R.id.textViewDataFoodInstruction)
+        //val donationQuantity : TextView = view.findViewById(R.id.textViewDataFoodQuantity)
+        //val donationExpiry: TextView = view.findViewById(R.id.textViewDataExpiryDate)
 
         init {
             // Define click listener for the ViewHolder's View.
             view.setOnClickListener {
-                val sharedPref = it.context.getSharedPreferences("donation_shared_pref", Context.MODE_PRIVATE)
-                val editor = sharedPref.edit()
 
-                val donation = dataSet[adapterPosition]
-                editor.putString("id", donation.id.toString())
-                editor.putString("name", donation.name.toString())
-                editor?.apply()
-                it.findNavController().navigate(R.id.action_donationListFragment_to_donationListDetailFragment)
             }
         }
     }
@@ -57,6 +53,15 @@ class DonationAdapter() :
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val donation = dataSet[position]
         holder.donationName.text = donation.name
+        //holder.donationInstruction.text = donation.instruction
+        //holder.donationQuantity.text = donation.quantity.toString()
+        //holder.donationExpiry.text = donation.expiryDate.toString()
+
+        holder.itemView.setOnClickListener{
+            onItemClick(donation)
+        }
     }
+
+
 }
 

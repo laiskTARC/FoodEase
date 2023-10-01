@@ -76,8 +76,7 @@ class EventCreateFragment : Fragment() {
             val startDate = binding.editTextStartingDate.text.toString().trim()
             val endDate = binding.editTextStartingDate.text.toString().trim()
             val venue = binding.editTextVenueAddress.text.toString().trim()
-            val editTextVolunteerRequired = binding.editTextVolunteerRequired.text.toString().trim()
-            val volunteerRequired = editTextVolunteerRequired.toInt()
+
 
             //Validate Event Name
             if (eventName.isEmpty()){
@@ -106,10 +105,14 @@ class EventCreateFragment : Fragment() {
                 return@setOnClickListener
             }
 
-            if(editTextVolunteerRequired.isEmpty()){
+            val editTextVolunteerRequiredText = binding.editTextVolunteerRequired.text.toString().trim()
+
+            if (editTextVolunteerRequiredText.isEmpty()) {
                 Snackbar.make(view, "Volunteer Required cannot be empty", Snackbar.LENGTH_SHORT).show()
                 return@setOnClickListener
             }
+
+            val editTextVolunteerRequired = editTextVolunteerRequiredText.toInt()
 
             // Database
             val database = Firebase.database
@@ -117,7 +120,7 @@ class EventCreateFragment : Fragment() {
             val newChildRef = ref.push()
             val id = newChildRef.key?: ""
 
-            val event = Event(id,eventName,description, venue, startDate, endDate, volunteerRequired)
+            val event = Event(id,eventName,description, venue, startDate, endDate, editTextVolunteerRequired)
 
             newChildRef.setValue(event).addOnSuccessListener {
                 Snackbar.make(view, "Saved", Snackbar.LENGTH_SHORT).show()

@@ -6,22 +6,31 @@
     android:layout_height="match_parent"
     tools:context=".ui.donation.DonationListUpdateFragment">
 
-    <!-- TODO: Update blank fragment layout -->
-  
+    <TextView
+        android:id="@+id/textView8"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="@string/fooddupdate"
+        android:textColor="#FFFFFF"
+        android:textSize="24sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
 
     <TextView
         android:id="@+id/foodname"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="20dp"
+        android:layout_marginTop="90dp"
         android:layout_marginEnd="20dp"
         android:padding="9dp"
         android:text="Food Name"
-        android:textSize="20sp"
+        android:textSize="16sp"
+        android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="parent"
-        tools:layout_editor_absoluteY="90dp" />
+        app:layout_constraintStart_toStartOf="parent" />
 
     <EditText
         android:id="@+id/foodnameEditText"
@@ -45,7 +54,8 @@
         android:layout_marginEnd="20dp"
         android:padding="9dp"
         android:text="Food Description"
-        android:textSize="20sp"
+        android:textSize="16sp"
+        android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
@@ -65,7 +75,7 @@
         app:layout_constraintTop_toBottomOf="@+id/fooddesc" />
 
     <TextView
-        android:id="@+id/Date"
+        android:id="@+id/instruction"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="20dp"
@@ -73,14 +83,15 @@
         android:layout_marginEnd="20dp"
         android:padding="9dp"
         android:text="Food Instruction"
-        android:textSize="20sp"
+        android:textSize="16sp"
+        android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/descEditText" />
 
     <EditText
-        android:id="@+id/dateEditText"
+        android:id="@+id/instructionEditText"
         android:layout_width="0dp"
         android:layout_height="48dp"
         android:layout_marginStart="20dp"
@@ -90,19 +101,20 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/Date" />
+        app:layout_constraintTop_toBottomOf="@+id/instruction" />
 
     <EditText
-        android:id="@+id/editTextTextQuatity"
+        android:id="@+id/editTextTextQuantity"
         android:layout_width="wrap_content"
         android:layout_height="48dp"
         android:layout_marginStart="20dp"
         android:layout_marginTop="20dp"
+
         android:ems="10"
         android:hint="Quantity"
-        android:inputType="text"
+        android:inputType="number"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/dateEditText" />
+        app:layout_constraintTop_toBottomOf="@+id/instructionEditText" />
 
     <Button
         android:id="@+id/button6"
@@ -112,15 +124,14 @@
         android:layout_marginTop="40dp"
         android:text="Upload Image"
         app:layout_constraintStart_toEndOf="@+id/imageView"
-        app:layout_constraintTop_toBottomOf="@+id/editTextTextQuatity" />
-
+        app:layout_constraintTop_toBottomOf="@+id/editTextTextQuantity" />
     <Button
         android:id="@+id/buttonUpdate2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="16dp"
         android:layout_marginBottom="16dp"
-        android:text="Update"
+        android:text="Create"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
 
@@ -141,7 +152,6 @@
         android:layout_marginStart="20dp"
         android:layout_marginTop="20dp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextTextQuatity"
+        app:layout_constraintTop_toBottomOf="@+id/editTextTextQuantity"
         tools:srcCompat="@tools:sample/avatars" />
-
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -39,10 +39,16 @@ class ProfileFragment : Fragment() {
 
         val user = FirebaseAuth.getInstance()
         if(user != null){
-            binding.textViewEmail.text = user.currentUser.toString()
+            binding.textViewName.text = user.currentUser?.displayName.toString()
+            binding.textViewEmail.text = user.currentUser?.email.toString()
         }
+
         binding.containerProfileInformation.setOnClickListener{
             findNavController().navigate(R.id.action_profileFragment_to_profileInformationFragment)
+        }
+
+        binding.containerHistory.setOnClickListener{
+            findNavController().navigate(R.id.action_profileFragment_to_eventHistoryFragment)
         }
 
         binding.containerLogOut.setOnClickListener{

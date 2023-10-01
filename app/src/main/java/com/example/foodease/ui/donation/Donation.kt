@@ -6,9 +6,10 @@ import androidx.room.PrimaryKey
 @Entity(tableName = "donations")
 data class Donation(
     @PrimaryKey
-    var id : Int= 0,
-    var name: String = "",
-    var instruction : String = "",
+    var id : String = "",
+    var name: String? = "",
+    var description : String? = "",
+    var instruction : String? = "",
     var quantity : Int = 0,
-    var expiryDate : Int = 0
+    var expiryDate : String = ""
 )

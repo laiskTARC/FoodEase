@@ -3,40 +3,47 @@ package com.example.foodease.ui.volunteer
 import android.app.Application
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
 import com.example.foodease.database.volunteer.VolunteerDatabase
 import com.example.foodease.database.volunteer.VolunteerRepository
+import com.example.foodease.ui.event.Event
 import kotlinx.coroutines.launch
 
 class VolunteerViewModel(application: Application): AndroidViewModel(application) {
     var volunteerList: LiveData<List<Volunteer>>
     private val repository: VolunteerRepository
+    private val volunteerRecord = MutableLiveData<Volunteer>()
 
     init {
-        //val list = ArrayList<Contact>()
-        //contactList.value = list
 
         //Create an instance of DB
-        val contactDao = VolunteerDatabase.getDatabase(application).volunteerDao()
+        val volunteerDao = VolunteerDatabase.getDatabase(application).volunteerDao()
         //Connect DAO to repository
-        repository = VolunteerRepository(contactDao)
-        //Retrieve contact records
-        volunteerList = repository.allContacts
+        repository = VolunteerRepository(volunteerDao)
+        //Retrieve volunteer records
+        volunteerList = repository.allVolunteers
     }
 
     //Coroutine
-    fun insert(contact: Volunteer) = viewModelScope.launch {
-        repository.insert(contact)
+    fun insert(volunteer: Volunteer) = viewModelScope.launch {
+        repository.insert(volunteer)
     }
 
-    fun delete(contact: Volunteer) = viewModelScope.launch {
-        repository.delete(contact)
+    fun delete(volunteer: Volunteer) = viewModelScope.launch {
+        repository.delete(volunteer)
     }
 
     fun deleteAll() = viewModelScope.launch {
         repository.deleteAll()
     }
-    fun update(contact: Volunteer) = viewModelScope.launch {
-        repository.update(contact)
+    fun update(volunteer: Volunteer) = viewModelScope.launch {
+        repository.update(volunteer)
+    }
+
+    val volunteers: LiveData<Volunteer> get() = volunteerRecord
+
+    fun setSelected(volunteer: Volunteer){
+        volunteerRecord.value = volunteer
     }
 }

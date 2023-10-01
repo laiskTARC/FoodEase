@@ -6,16 +6,16 @@ import com.example.foodease.ui.volunteer.Volunteer
 
 class VolunteerRepository(private val volunteerDao: VolunteerDao) {
     //Room execute all queries on a separate thread
-    val allContacts: LiveData<List<Volunteer>> = volunteerDao.getAllVolunteer()
+    val allVolunteers: LiveData<List<Volunteer>> = volunteerDao.getAllVolunteer()
 
     @WorkerThread
-    suspend fun insert(contact: Volunteer){
-        volunteerDao.insert(contact)
+    suspend fun insert(volunteer: Volunteer){
+        volunteerDao.insert(volunteer)
     }
 
     @WorkerThread
-    suspend fun delete(contact: Volunteer){
-        volunteerDao.delete(contact)
+    suspend fun delete(volunteer: Volunteer){
+        volunteerDao.delete(volunteer)
     }
 
     @WorkerThread
@@ -24,7 +24,7 @@ class VolunteerRepository(private val volunteerDao: VolunteerDao) {
     }
 
     @WorkerThread
-    suspend fun update(contact: Volunteer){
-        volunteerDao.update(contact)
+    suspend fun update(volunteer: Volunteer){
+        volunteerDao.update(volunteer)
     }
 }

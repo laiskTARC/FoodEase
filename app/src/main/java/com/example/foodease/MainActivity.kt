@@ -72,13 +72,11 @@ class MainActivity : AppCompatActivity() {
         val auth = FirebaseAuth.getInstance()
 
         auth.addAuthStateListener {
-            if(it.currentUser != null){
+            if (it.currentUser != null) {
                 Log.i("firebase", "Auth Yes")
 
                 navigationForLoggedIn()
-            }
-
-            else{
+            } else {
                 navController.navigate(R.id.selectLogin)
                 Log.i("firebase", "Auth Fusck")
 
@@ -102,9 +100,8 @@ class MainActivity : AppCompatActivity() {
             }
 
         }
-
-
     }
+
 
     /*
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
@@ -149,9 +146,7 @@ class MainActivity : AppCompatActivity() {
         binding.bottomNavAdmin.setOnItemSelectedListener { item ->
             when (item.itemId) {
                 R.id.itemEvent -> {
-                    Log.d("Navigation", "Navigating to EventFragment")
-                    // Navigate to the "Event" fragment destination
-                    findNavController(R.id.fragment).navigate(R.id.eventFragment)
+                    navController.navigate(R.id.eventFragment)
                     true
                 }
 

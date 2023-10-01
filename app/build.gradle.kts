@@ -1,3 +1,5 @@
+
+
 plugins {
     id("com.android.application")
     id("org.jetbrains.kotlin.android")
@@ -13,10 +15,12 @@ android {
         viewBinding = true
     }
 
+
+
     defaultConfig {
         applicationId = "com.example.foodease"
         minSdk = 24
-        targetSdk = 33
+        targetSdk = 34
         versionCode = 1
         versionName = "1.0"
 
@@ -68,6 +72,11 @@ dependencies {
     // for adding recyclerview
     implementation ("androidx.recyclerview:recyclerview:1.2.0")
 
+    // Lifecycle components
+    implementation ("androidx.lifecycle:lifecycle-extensions:2.2.0")
+    implementation ("androidx.lifecycle:lifecycle-common-java8:2.2.0")
+    implementation ("androidx.lifecycle:lifecycle-viewmodel-ktx:2.2.0")
+
     val room_version = "2.5.2"
 
     implementation("androidx.room:room-runtime:$room_version")
@@ -75,6 +84,7 @@ dependencies {
     //ksp("androidx.room:room-compiler:$room_version")
 
     kapt("androidx.room:room-compiler:$room_version")
+
     // optional - Kotlin Extensions and Coroutines support for Room
     implementation("androidx.room:room-ktx:$room_version")
 
