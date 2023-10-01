@@ -3,30 +3,11 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".DonationListDetailFragment">
-
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
-    <include
-        android:id="@+id/include"
-        layout="@layout/header"
-        tools:layout_editor_absoluteX="0dp" />
-
-
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/fooddetail"
-        android:textAlignment="center"
-        android:textColor="#FFFFFF"
-        android:textSize="30sp" />
+    tools:context=".ui.donation.DonationListDetailFragment">
 
     <!-- Food Name -->
     <TextView
-        android:id="@+id/textView7"
+        android:id="@+id/textViewDataFoodName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="170dp"
@@ -45,7 +26,7 @@
 
     <!-- Food Description Value -->
     <TextView
-        android:id="@+id/textView9"
+        android:id="@+id/textViewDataFoodInstruction"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="170dp"
@@ -64,7 +45,7 @@
 
     <!-- Food Instruction Value -->
     <TextView
-        android:id="@+id/textView10"
+        android:id="@+id/textViewDataFoodQuantity"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="170dp"
@@ -92,7 +73,7 @@
         android:textStyle="bold" />
 
     <TextView
-        android:id="@+id/textView21"
+        android:id="@+id/textViewDataExpiryDate"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="170dp"
@@ -130,11 +111,17 @@
 
     <!-- Food Image -->
     <ImageView
-        android:id="@+id/imageView2"
+        android:id="@+id/imageViewDonation"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginLeft="150dp"
         android:layout_marginTop="90dp"
         tools:srcCompat="@tools:sample/avatars" />
+
+    <Button
+        android:id="@+id/buttonDeleteDonation"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Delete" />
 
 </FrameLayout>
