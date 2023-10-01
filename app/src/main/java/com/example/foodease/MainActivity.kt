@@ -93,8 +93,10 @@ class MainActivity : AppCompatActivity() {
                 navController.navigate(R.id.selectLogin)
                 // Display a message or perform any other action
                 Toast.makeText(this, "Access Denied", Toast.LENGTH_SHORT).show()
-            } else if (user != null && destination.id in allowedDestinations) {
-                navController.navigate(R.id.homeFragment)
+            }
+
+            else if(user != null && destination.id in allowedDestinations){
+                    navController.navigate(R.id.homeFragment)
             }
 
         }

@@ -82,29 +82,32 @@
     </fragment>
     <fragment
         android:id="@+id/inventoryListFragment"
-        android:name="com.example.foodease.InventoryListFragment"
+        android:name="com.example.foodease.ui.inventory.InventoryListFragment"
         android:label="@string/inventory"
         tools:layout="@layout/fragment_inventory_list">
         <action
             android:id="@+id/action_inventoryListFragment_to_inventoryListDetailFragment"
             app:destination="@id/inventoryListDetailFragment" />
+        <action
+            android:id="@+id/action_inventoryListFragment_to_inventoryListAddFragment"
+            app:destination="@id/inventoryListAddFragment" />
     </fragment>
     <fragment
         android:id="@+id/inventoryListDetailFragment"
-        android:name="com.example.foodease.InventoryListDetailFragment"
+        android:name="com.example.foodease.ui.inventory.InventoryListDetailFragment"
         android:label="Inventory Details"
         tools:layout="@layout/fragment_inventory_list_detail" >
         <action
             android:id="@+id/action_inventoryListDetailFragment_to_inventoryListFragment"
             app:destination="@id/inventoryListFragment" />
         <action
-            android:id="@+id/action_inventoryListDetailFragment_to_inventoryListAddFragment"
-            app:destination="@id/inventoryListAddFragment" />
+            android:id="@+id/action_inventoryListDetailFragment_to_inventoryListUpdateFragment"
+            app:destination="@id/inventoryListUpdateFragment" />
     </fragment>
     <fragment
         android:id="@+id/inventoryListAddFragment"
-        android:name="com.example.foodease.InventoryListAddFragment"
-        android:label="fragment_inventory_list_add"
+        android:name="com.example.foodease.ui.inventory.InventoryListAddFragment"
+        android:label="Inventory Add"
         tools:layout="@layout/fragment_inventory_list_add" >
         <action
             android:id="@+id/action_inventoryListAddFragment_to_inventoryListFragment"
@@ -112,9 +115,13 @@
     </fragment>
     <fragment
         android:id="@+id/inventoryListUpdateFragment"
-        android:name="com.example.foodease.InventoryListUpdateFragment"
+        android:name="com.example.foodease.ui.inventory.InventoryListUpdateFragment"
         android:label="Inventory Update"
-        tools:layout="@layout/fragment_inventory_list_update" />
+        tools:layout="@layout/fragment_inventory_list_update" >
+        <action
+            android:id="@+id/action_inventoryListUpdateFragment_to_inventoryListFragment"
+            app:destination="@id/inventoryListFragment" />
+    </fragment>
     <fragment
         android:id="@+id/requestListFragment"
         android:name="com.example.foodease.RequestListFragment"
