@@ -7,11 +7,11 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
 import com.example.foodease.database.donation.DonationDatabase
 import com.example.foodease.database.donation.DonationRepository
+import com.example.foodease.ui.event.Event
 import kotlinx.coroutines.launch
 
 class DonationViewModel(application: Application): AndroidViewModel(application) {
-    val _selectedDonation : MutableLiveData<Donation> = MutableLiveData()
-
+    private val selectedDonation = MutableLiveData<Donation>()
 
     private var donationList: LiveData<List<Donation>>
     private val repository: DonationRepository
@@ -37,6 +37,8 @@ class DonationViewModel(application: Application): AndroidViewModel(application)
     }
 
     fun setSelectedDonation(donation: Donation) {
-        _selectedDonation.value = donation
+        selectedDonation.value = donation
     }
+
+    val donations: LiveData<Donation> get() = selectedDonation
 }

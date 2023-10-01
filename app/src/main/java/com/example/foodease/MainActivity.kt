@@ -72,13 +72,11 @@ class MainActivity : AppCompatActivity() {
         val auth = FirebaseAuth.getInstance()
 
         auth.addAuthStateListener {
-            if(it.currentUser != null){
+            if (it.currentUser != null) {
                 Log.i("firebase", "Auth Yes")
 
                 navigationForLoggedIn()
-            }
-
-            else{
+            } else {
                 navController.navigate(R.id.selectLogin)
                 Log.i("firebase", "Auth Fusck")
 
@@ -88,23 +86,20 @@ class MainActivity : AppCompatActivity() {
 
         navController.addOnDestinationChangedListener { _, destination, _ ->
             val user = FirebaseAuth.getInstance().currentUser
-                if (user == null && destination.id !in allowedDestinations) {
-                    Log.i("firebase", "Auth Fuin $user")
-                    // User is trying to navigate to a restricted destination
-                    // Navigate them back to the login fragment
-                    navController.navigate(R.id.selectLogin)
-                    // Display a message or perform any other action
-                    Toast.makeText(this, "Access Denied", Toast.LENGTH_SHORT).show()
-                }
-
-            else if(user != null && destination.id in allowedDestinations){
-                    navController.navigate(R.id.homeFragment)
-                }
+            if (user == null && destination.id !in allowedDestinations) {
+                Log.i("firebase", "Auth Fuin $user")
+                // User is trying to navigate to a restricted destination
+                // Navigate them back to the login fragment
+                navController.navigate(R.id.selectLogin)
+                // Display a message or perform any other action
+                Toast.makeText(this, "Access Denied", Toast.LENGTH_SHORT).show()
+            } else if (user != null && destination.id in allowedDestinations) {
+                navController.navigate(R.id.homeFragment)
+            }
 
         }
-
-
     }
+
 
     /*
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
@@ -149,9 +144,7 @@ class MainActivity : AppCompatActivity() {
         binding.bottomNavAdmin.setOnItemSelectedListener { item ->
             when (item.itemId) {
                 R.id.itemEvent -> {
-                    Log.d("Navigation", "Navigating to EventFragment")
-                    // Navigate to the "Event" fragment destination
-                    findNavController(R.id.fragment).navigate(R.id.eventFragment)
+                    navController.navigate(R.id.eventFragment)
                     true
                 }
 

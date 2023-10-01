@@ -52,10 +52,11 @@
         android:label="Donation"
         tools:layout="@layout/fragment_donation_list" >
         <action
+            android:id="@+id/action_donationListFragment_to_donationCreateFragment"
+            app:destination="@id/donationCreateFragment" />
+        <action
             android:id="@+id/action_donationListFragment_to_donationListDetailFragment"
-            app:destination="@id/donationListDetailFragment"
-            app:enterAnim="@anim/slide_in_right"
-            app:popEnterAnim="@android:anim/slide_in_left" />
+            app:destination="@id/donationListDetailFragment" />
     </fragment>
     <fragment
         android:id="@+id/donationListDetailFragment"
@@ -75,8 +76,9 @@
         android:label="@string/edit_donation"
         tools:layout="@layout/fragment_donation_list_update">
         <action
-            android:id="@+id/action_donationListUpdateFragment_to_donationListDetailFragment"
-            app:destination="@id/donationListDetailFragment" />
+            android:id="@+id/action_donationListUpdateFragment_to_donationListFragment"
+            app:destination="@id/donationListFragment"
+            app:enterAnim="@android:anim/slide_in_left" />
     </fragment>
     <fragment
         android:id="@+id/inventoryListFragment"
@@ -161,12 +163,12 @@
         android:id="@+id/volunteerListDetailFragment"
         android:name="com.example.foodease.ui.volunteer.VolunteerListDetailFragment"
         android:label="@string/volunteer_details"
-        tools:layout="@layout/fragment_volunteer_list_detail" />
-    <fragment
-        android:id="@+id/volunteerListAddFragment"
-        android:name="com.example.foodease.ui.volunteer.VolunteerListAddFragment"
-        android:label="fragment_volunteer_list_add"
-        tools:layout="@layout/fragment_volunteer_list_add" />
+        tools:layout="@layout/fragment_volunteer_list_detail" >
+        <action
+            android:id="@+id/action_volunteerListDetailFragment_to_volunteerListFragment"
+            app:destination="@id/volunteerListFragment"
+            app:enterAnim="@android:anim/slide_in_left" />
+    </fragment>
     <fragment
         android:id="@+id/eventFragment"
         android:name="com.example.foodease.ui.event.EventList"
@@ -207,7 +209,12 @@
         android:id="@+id/eventDetailFragment"
         android:name="com.example.foodease.ui.event.EventDetailFragment"
         android:label="Event Details"
-        tools:layout="@layout/fragment_event_detail" />
+        tools:layout="@layout/fragment_event_detail" >
+        <action
+            android:id="@+id/action_eventDetailFragment_to_eventFragment"
+            app:destination="@id/eventFragment"
+            app:enterAnim="@android:anim/slide_in_left" />
+    </fragment>
     <fragment
         android:id="@+id/eventCreateFragment"
         android:name="com.example.foodease.ui.event.EventCreateFragment"
@@ -238,6 +245,11 @@
             app:destination="@id/selectLogin"
             app:popUpTo="@id/navigation"
             app:popUpToInclusive="true" />
+        <action
+            android:id="@+id/action_profileFragment_to_eventHistoryFragment"
+            app:destination="@id/eventHistoryFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:popEnterAnim="@android:anim/slide_in_left" />
     </fragment>
     <fragment
         android:id="@+id/profileInformationFragment"
@@ -250,6 +262,20 @@
         <action
             android:id="@+id/action_placeholder_to_homeFragment"
             app:destination="@id/homeFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/eventHistoryFragment"
+        android:name="com.example.foodease.ui.event.EventHistoryFragment"
+        android:label="Event History"
+        tools:layout="@layout/fragment_event_history" />
+    <fragment
+        android:id="@+id/donationCreateFragment"
+        android:name="com.example.foodease.ui.donation.DonationCreateFragment"
+        android:label="DonationCreateFragment" >
+        <action
+            android:id="@+id/action_donationCreateFragment_to_donationListFragment"
+            app:destination="@id/donationListFragment"
+            app:enterAnim="@android:anim/slide_in_left" />
     </fragment>
 
 </navigation>

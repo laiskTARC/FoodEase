@@ -15,6 +15,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.MenuHost
 import androidx.core.view.MenuProvider
 import androidx.core.view.ViewCompat
+import androidx.fragment.app.activityViewModels
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Lifecycle
 import androidx.navigation.fragment.FragmentNavigatorExtras
@@ -29,9 +30,9 @@ import com.google.firebase.database.ValueEventListener
 import com.google.firebase.database.ktx.database
 import com.google.firebase.ktx.Firebase
 
-class EventList : Fragment(), EventClickListener {
+class EventList : Fragment() {
 
-    val eventViewModel: EventViewModel by viewModels()
+    val eventViewModel: EventViewModel by activityViewModels()
     private var _binding : FragmentEventListBinding? = null
     private val binding get() = _binding!!
 
@@ -58,7 +59,7 @@ class EventList : Fragment(), EventClickListener {
         val recyclerViewEvent = binding.recyclerViewEvent
         recyclerViewEvent.layoutManager = LinearLayoutManager(requireContext())
         val data = ArrayList<Event>()
-        val name = ""
+        //val name = ""
 
         // Remote Database
         val firebaseDatabase = Firebase.database
@@ -73,7 +74,11 @@ class EventList : Fragment(), EventClickListener {
                         data.add(event!!)
                     }
 
-                    val adapter = EventAdapter(this@EventList)
+                    val adapter = EventAdapter{selectedItem->
+                        eventViewModel.setSelected(selectedItem)
+
+                        findNavController().navigate(R.id.action_eventFragment_to_eventDetailFragment)
+                    }
                     //val textViewE = binding.textView4
                     adapter.setEvent(data)
 
@@ -127,9 +132,4 @@ class EventList : Fragment(), EventClickListener {
             else -> super.onOptionsItemSelected(item)
         }
     }
-    override fun onEventClick(eventId: String?) {
-        // Call FragmentB using the NavController
-        findNavController().navigate(R.id.action_eventFragment_to_eventDetailFragment)
-    }
-
 }

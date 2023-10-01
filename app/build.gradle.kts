@@ -1,7 +1,10 @@
+
+
 plugins {
     id("com.android.application")
     id("org.jetbrains.kotlin.android")
     id("com.google.gms.google-services")
+    id ("kotlin-kapt")
 }
 
 android {
@@ -12,10 +15,12 @@ android {
         viewBinding = true
     }
 
+
+
     defaultConfig {
         applicationId = "com.example.foodease"
         minSdk = 24
-        targetSdk = 33
+        targetSdk = 34
         versionCode = 1
         versionName = "1.0"
 
@@ -32,11 +37,11 @@ android {
         }
     }
     compileOptions {
-        sourceCompatibility = JavaVersion.VERSION_1_8
-        targetCompatibility = JavaVersion.VERSION_1_8
+        sourceCompatibility = JavaVersion.VERSION_17
+        targetCompatibility = JavaVersion.VERSION_17
     }
     kotlinOptions {
-        jvmTarget = "1.8"
+        jvmTarget = "17"
     }
 }
 
@@ -67,12 +72,18 @@ dependencies {
     // for adding recyclerview
     implementation ("androidx.recyclerview:recyclerview:1.2.0")
 
+    // Lifecycle components
+    implementation ("androidx.lifecycle:lifecycle-extensions:2.2.0")
+    implementation ("androidx.lifecycle:lifecycle-common-java8:2.2.0")
+    implementation ("androidx.lifecycle:lifecycle-viewmodel-ktx:2.2.0")
+
     val room_version = "2.5.2"
 
     implementation("androidx.room:room-runtime:$room_version")
     // To use Kotlin Symbol Processing (KSP)
     //ksp("androidx.room:room-compiler:$room_version")
 
+    kapt ("androidx.room:room-compiler:$room_version")
     // optional - Kotlin Extensions and Coroutines support for Room
     implementation("androidx.room:room-ktx:$room_version")
 

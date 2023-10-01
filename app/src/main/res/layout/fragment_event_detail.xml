@@ -69,11 +69,12 @@
                     android:padding="10dp"
                     android:text="@string/description" />
 
-                <TextView
+                <EditText
                     android:id="@+id/textViewDataDescription"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="4"
+                    android:background="@drawable/edit_text_border"
                     android:padding="10dp"
                     android:text="Yo Surpise Mother Fucker"
                     android:textStyle="bold" />
@@ -92,12 +93,13 @@
                     android:padding="10dp"
                     android:text="Venue Address" />
 
-                <TextView
+                <EditText
                     android:id="@+id/textViewDataVenueAddress"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="4"
                     android:padding="10dp"
+                    android:background="@drawable/edit_text_border"
                     android:text="TextView"
                     android:textStyle="bold" />
             </TableRow>
@@ -115,13 +117,14 @@
                     android:padding="10dp"
                     android:text="Volunteer Required" />
 
-                <TextView
+                <EditText
                     android:id="@+id/textViewDataVolunteerRequired"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="4"
                     android:padding="10dp"
                     android:text="TextView"
+                    android:background="@drawable/edit_text_border"
                     android:textStyle="bold" />
             </TableRow>
 
@@ -138,13 +141,14 @@
                     android:padding="10dp"
                     android:text="@string/starting_datetime" />
 
-                <TextView
+                <EditText
                     android:id="@+id/textViewDataStart"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="4"
                     android:padding="10dp"
                     android:text="TextView"
+                    android:background="@drawable/edit_text_border"
                     android:textStyle="bold" />
             </TableRow>
 
@@ -161,13 +165,14 @@
                     android:padding="10dp"
                     android:text="@string/ending_datetime" />
 
-                <TextView
+                <EditText
                     android:id="@+id/textViewDataEnd"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="4"
                     android:padding="10dp"
                     android:text="TextView"
+                    android:background="@drawable/edit_text_border"
                     android:textStyle="bold" />
             </TableRow>
         </TableLayout>

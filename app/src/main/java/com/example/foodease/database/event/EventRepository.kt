@@ -5,6 +5,7 @@ import androidx.lifecycle.LiveData
 import com.example.foodease.ui.event.Event
 
 class EventRepository(private val eventDao: EventDao) {
+
     //Room execute all queries on a separate thread
     val allEvents: LiveData<List<Event>> = eventDao.getAllEvent()
 

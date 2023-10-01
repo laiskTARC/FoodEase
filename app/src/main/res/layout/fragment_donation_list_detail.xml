@@ -45,7 +45,7 @@
 
     <!-- Food Instruction Value -->
     <TextView
-        android:id="@+id/textViewFoodQuantity"
+        android:id="@+id/textViewDataFoodQuantity"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="170dp"
@@ -73,7 +73,7 @@
         android:textStyle="bold" />
 
     <TextView
-        android:id="@+id/textViewExpiryDate"
+        android:id="@+id/textViewDataExpiryDate"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="170dp"
@@ -117,5 +117,11 @@
         android:layout_marginLeft="150dp"
         android:layout_marginTop="90dp"
         tools:srcCompat="@tools:sample/avatars" />
+
+    <Button
+        android:id="@+id/buttonDeleteDonation"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Delete" />
 
 </FrameLayout>

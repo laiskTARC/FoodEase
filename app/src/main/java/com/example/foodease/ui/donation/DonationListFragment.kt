@@ -5,9 +5,13 @@ import android.os.Bundle
 import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
+import android.view.Menu
+import android.view.MenuInflater
+import android.view.MenuItem
 import android.view.View
 import android.view.ViewGroup
 import androidx.appcompat.app.AppCompatActivity
+import androidx.fragment.app.activityViewModels
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
@@ -15,6 +19,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.foodease.R
 import com.example.foodease.databinding.FragmentDonationListBinding
 import com.example.foodease.ui.event.EventViewModel
+import com.example.foodease.ui.volunteer.VolunteerViewModel
 import com.google.android.material.snackbar.Snackbar
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
@@ -27,6 +32,13 @@ class DonationListFragment : Fragment() {
     private var _binding : FragmentDonationListBinding? = null
     private val binding get() = _binding!!
 
+    val donationViewModel: DonationViewModel by activityViewModels()
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+
+        setHasOptionsMenu(true)
+    }
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -51,7 +63,11 @@ class DonationListFragment : Fragment() {
 
         val ref = firebaseDatabase.getReference("donations")
 
-        val adapter = DonationAdapter()
+        val adapter = DonationAdapter{ selectedItem->
+        donationViewModel.setSelectedDonation(selectedItem)
+
+        findNavController().navigate(R.id.action_donationListFragment_to_donationListDetailFragment)
+    }
 
         ref.addValueEventListener(object : ValueEventListener {
             override fun onDataChange(snapshot: DataSnapshot) {
@@ -83,6 +99,24 @@ class DonationListFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
+        super.onCreateOptionsMenu(menu, inflater)
+
+        inflater.inflate(R.menu.menu_donation, menu)
+
+        menu.findItem(R.id.itemAddDonation).setVisible(true)
+    }
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+
+        return when (item.itemId) {
+            R.id.itemAddDonation -> {
+                findNavController().navigate(R.id.action_donationListFragment_to_donationCreateFragment)
+                true
+            }
+            else -> super.onOptionsItemSelected(item)
+        }
     }
 
 }

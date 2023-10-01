@@ -9,9 +9,9 @@ import com.example.foodease.database.event.EventDatabase
 import com.example.foodease.database.event.EventRepository
 import kotlinx.coroutines.launch
 
-class EventViewModel(application: Application): AndroidViewModel(application) {
-    private val eventRecord = MutableLiveData<Event>()
-    var eventList: LiveData<List<Event>>
+class EventHistoryViewModel(application: Application): AndroidViewModel(application) {
+    private val eventHistoryRecord = MutableLiveData<Event>()
+    private val eventList: LiveData<List<Event>>
     private val repository: EventRepository
 
     init {
@@ -35,9 +35,9 @@ class EventViewModel(application: Application): AndroidViewModel(application) {
     }
 
     fun setSelected(event: Event){
-        eventRecord.value = event
+        eventHistoryRecord.value = event
     }
 
-    val events: LiveData<Event> get() = eventRecord
+    val events: LiveData<Event> get() = eventHistoryRecord
 
 }
