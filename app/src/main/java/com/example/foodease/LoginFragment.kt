@@ -41,9 +41,12 @@ class LoginFragment : Fragment() {
         (activity as AppCompatActivity?)?.supportActionBar?.show()
 
 
+
         // Hide the bottom navigation view
         //val bottomNavigationView = activity?.findViewById<BottomNavigationView>(R.id.bottomNavAdmin)
         //bottomNavigationView?.visibility = View.GONE
+
+
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -52,10 +55,8 @@ class LoginFragment : Fragment() {
         val auth = Firebase.auth
         val loginButton = binding.buttonAdminLogin
         loginButton.setOnClickListener {
-            findNavController().navigate(R.id.action_loginFragment_to_homeFragment)
 
             // Start
-            /*
             val email = binding.emailEditText.text.toString()
             val password = binding.passwordEditText.text.toString()
 
@@ -82,16 +83,16 @@ class LoginFragment : Fragment() {
                         findNavController().navigate(R.id.action_loginFragment_to_homeFragment)
                     } else {
                         // If sign-in fails, display a message to the user.
-                        Log.i("firebaseLogin", "Auth Fuin $user")
-                        findNavController().navigate(R.id.action_loginFragment_to_homeFragment)
-                        /*Snackbar.make(
+
+                        Snackbar.make(
                             view,
                             "Authentication failed",
                             Snackbar.LENGTH_SHORT
-                        ).show()*/
+                        ).show()
                     }
-                }*/
+                }
         }
     }
+
 
 }
