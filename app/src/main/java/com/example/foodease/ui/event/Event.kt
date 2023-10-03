@@ -12,5 +12,6 @@ data class Event(
     val venueAddress : String = "",
     val startingDate : String = "",
     val endingDate : String = "",
-    val volunteerRequired : Int = 0
+    val volunteerRequired : Int = 0,
+    val imageUrl : String = ""
 )

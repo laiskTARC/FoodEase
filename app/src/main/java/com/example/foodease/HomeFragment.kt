@@ -51,27 +51,17 @@ class HomeFragment : Fragment() {
             startActivity(Intent.createChooser(emailIntent, "Chooser Title"));
         }
 
-        /*
-        val donationButton = view.findViewById<Button>(R.id.donationButton)
+
+        val donationButton = binding.donationButton
         donationButton.setOnClickListener {
             findNavController().navigate(R.id.action_homeFragment_to_donationListFragment)
         }
 
-        val inventoryButton = view.findViewById<Button>(R.id.inventoryButton)
-        inventoryButton.setOnClickListener {
-            findNavController().navigate(R.id.action_homeFragment_to_donationListFragment)
-        }
-
-        val requestButton = view.findViewById<Button>(R.id.requestButton)
+        val requestButton = binding.requestButton
         requestButton.setOnClickListener {
             findNavController().navigate(R.id.action_homeFragment_to_donationListFragment)
         }
 
-        val volunteerButton = view.findViewById<Button>(R.id.volunteerButton)
-        volunteerButton.setOnClickListener {
-            findNavController().navigate(R.id.action_homeFragment_to_donationListFragment)
-        }
-*/
         return binding.root
     }
 

@@ -6,32 +6,29 @@ import android.net.Uri
 import android.os.Bundle
 import android.provider.OpenableColumns
 import android.util.Log
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
-import androidx.activity.result.ActivityResultLauncher
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
+import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import com.example.foodease.R
 import com.example.foodease.databinding.FragmentEventCreateBinding
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.android.material.snackbar.Snackbar
 import com.google.firebase.database.ktx.database
-import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.ktx.Firebase
+import com.google.firebase.storage.FirebaseStorage
 import com.google.firebase.storage.StorageReference
-//import com.bumptech.glide.Glide
 
 class EventCreateFragment : Fragment() {
 
-    private var _binding : FragmentEventCreateBinding? = null
+    private var _binding: FragmentEventCreateBinding? = null
     private val binding get() = _binding!!
 
-    private lateinit var storageRef : StorageReference
-    private lateinit var firebaseFirestore: FirebaseFirestore
+    private lateinit var storageRef: StorageReference
+    private var imageUri: Uri? = null // Declare imageUri here
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -46,7 +43,8 @@ class EventCreateFragment : Fragment() {
     ): View? {
 
         // Hide the bottom navigation view
-        val bottomNavigationView = activity?.findViewById<BottomNavigationView>(R.id.bottomNavAdmin)
+        val bottomNavigationView =
+            activity?.findViewById<BottomNavigationView>(R.id.bottomNavAdmin)
         bottomNavigationView?.visibility = View.GONE
 
         _binding = FragmentEventCreateBinding.inflate(inflater, container, false)
@@ -59,6 +57,9 @@ class EventCreateFragment : Fragment() {
 
         val buttonCreate = binding.buttonCreateEvent
         val buttonSelectImage = binding.buttonSelectImage
+        val database = Firebase.database
+        val ref = database.getReference("events") // Database Name
+        storageRef = FirebaseStorage.getInstance().getReference("img")
 
         buttonSelectImage.setOnClickListener {
             // PICK INTENT picks item from data
@@ -67,45 +68,45 @@ class EventCreateFragment : Fragment() {
             // here item is type of image
             galleryIntent.type = "image/*"
             // ActivityResultLauncher callback
-            imagePickerActivityResult.launch(galleryIntent)
+            imagePickerActivityResult.launch("images/*")
         }
 
-        buttonCreate.setOnClickListener{
+        buttonCreate.setOnClickListener {
             val eventName = binding.editTextEventName.text.toString().trim()
             val description = binding.editTextDescription.text.toString().trim()
             val startDate = binding.editTextStartingDate.text.toString().trim()
             val endDate = binding.editTextStartingDate.text.toString().trim()
             val venue = binding.editTextVenueAddress.text.toString().trim()
 
-
-            //Validate Event Name
-            if (eventName.isEmpty()){
+            // Validate Event Name
+            if (eventName.isEmpty()) {
                 Snackbar.make(view, "Title cannot be empty", Snackbar.LENGTH_SHORT).show()
                 return@setOnClickListener
             }
 
-            //Validate Description
-            if(description.isEmpty()){
+            // Validate Description
+            if (description.isEmpty()) {
                 Snackbar.make(view, "Description cannot be empty", Snackbar.LENGTH_SHORT).show()
                 return@setOnClickListener
             }
 
-            if(startDate.isEmpty()){
+            if (startDate.isEmpty()) {
                 Snackbar.make(view, "Starting Date cannot be empty", Snackbar.LENGTH_SHORT).show()
                 return@setOnClickListener
             }
 
-            if(endDate.isEmpty()){
+            if (endDate.isEmpty()) {
                 Snackbar.make(view, "Ending Date cannot be empty", Snackbar.LENGTH_SHORT).show()
                 return@setOnClickListener
             }
 
-            if(venue.isEmpty()){
+            if (venue.isEmpty()) {
                 Snackbar.make(view, "Venue address cannot be empty", Snackbar.LENGTH_SHORT).show()
                 return@setOnClickListener
             }
 
-            val editTextVolunteerRequiredText = binding.editTextVolunteerRequired.text.toString().trim()
+            val editTextVolunteerRequiredText =
+                binding.editTextVolunteerRequired.text.toString().trim()
 
             if (editTextVolunteerRequiredText.isEmpty()) {
                 Snackbar.make(view, "Volunteer Required cannot be empty", Snackbar.LENGTH_SHORT).show()
@@ -115,18 +116,42 @@ class EventCreateFragment : Fragment() {
             val editTextVolunteerRequired = editTextVolunteerRequiredText.toInt()
 
             // Database
-            val database = Firebase.database
-            val ref = database.getReference("events") //Database Name
             val newChildRef = ref.push()
-            val id = newChildRef.key?: ""
+            val id = newChildRef.key ?: ""
 
-            val event = Event(id,eventName,description, venue, startDate, endDate, editTextVolunteerRequired)
+            // Upload Task with upload to directory 'events'
+            val sd = getFileName(requireContext(), imageUri!!) // Get the file name
 
-            newChildRef.setValue(event).addOnSuccessListener {
-                Snackbar.make(view, "Saved", Snackbar.LENGTH_SHORT).show()
-                findNavController().navigate(R.id.eventFragment)
-            }.addOnFailureListener{
-                Snackbar.make(view, "Failed", Snackbar.LENGTH_SHORT).show()
+            val uploadTask = storageRef.child("events/$sd").putFile(imageUri!!)
+
+            uploadTask.addOnSuccessListener { uploadResult ->
+                // Get the download URL for the uploaded image
+                storageRef.child("events/$sd").downloadUrl.addOnSuccessListener { downloadUri ->
+                    // Create the event object with the image URL
+                    val imageUrl = downloadUri.toString()
+                    val event = Event(
+                        id,
+                        eventName,
+                        description,
+                        venue,
+                        startDate,
+                        endDate,
+                        editTextVolunteerRequired,
+                        imageUrl // Set the imageUrl property
+                    )
+
+                    // Push the event object to the Firebase Realtime Database
+                    newChildRef.setValue(event).addOnSuccessListener {
+                        Snackbar.make(view, "Saved", Snackbar.LENGTH_SHORT).show()
+                        findNavController().navigate(R.id.eventFragment)
+                    }.addOnFailureListener {
+                        Snackbar.make(view, "Failed", Snackbar.LENGTH_SHORT).show()
+                    }
+                }.addOnFailureListener {
+                    Log.e("Firebase", "Failed to get image download URL")
+                }
+            }.addOnFailureListener {
+                Log.e("Firebase", "Image Upload fail")
             }
         }
     }
@@ -134,45 +159,19 @@ class EventCreateFragment : Fragment() {
     override fun onDestroyView() {
         super.onDestroyView()
 
-        //Show the bottom navigation view
-        val bottomNavigationView = activity?.findViewById<BottomNavigationView>(R.id.bottomNavAdmin)
+        // Show the bottom navigation view
+        val bottomNavigationView =
+            activity?.findViewById<BottomNavigationView>(R.id.bottomNavAdmin)
         bottomNavigationView?.visibility = View.VISIBLE
         (activity as AppCompatActivity?)?.supportActionBar?.setDisplayHomeAsUpEnabled(false)
     }
 
-    private var imagePickerActivityResult: ActivityResultLauncher<Intent> =
-    // lambda expression to receive a result back, here we
-        // receive single item(photo) on selection
-        registerForActivityResult( ActivityResultContracts.StartActivityForResult()) { result ->
-            if (result != null) {
-                // getting URI of selected Image
-                val imageUri: Uri? = result.data?.data
-
-                // val fileName = imageUri?.pathSegments?.last()
-
-                // extract the file name with extension
-                val sd = getFileName(requireContext(), imageUri!!)
-
-                // Upload Task with upload to directory 'file'
-                // and name of the file remains same
-                val uploadTask = storageRef.child("file/$sd").putFile(imageUri)
-
-                // On success, download the file URL and display it
-                uploadTask.addOnSuccessListener {
-                    // using glide library to display the image
-                    storageRef.child("upload/$sd").downloadUrl.addOnSuccessListener {
-                        /*
-                        Glide.with(this)
-                            .load(it)
-                            .into(imageview)*/
-
-                        Log.e("Firebase", "download passed")
-                    }.addOnFailureListener {
-                        Log.e("Firebase", "Failed in downloading")
-                    }
-                }.addOnFailureListener {
-                    Log.e("Firebase", "Image Upload fail")
-                }
+    private var imagePickerActivityResult =
+        registerForActivityResult(ActivityResultContracts.GetContent()) { uri ->
+            binding.imageView2.setImageURI(uri)
+            if (uri != null) {
+                // Getting URI of the selected image
+                imageUri = uri
             }
         }
 

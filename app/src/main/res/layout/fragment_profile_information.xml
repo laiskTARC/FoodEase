@@ -43,7 +43,7 @@
         />
 
     <TextView
-        android:id="@+id/textViewDate"
+        android:id="@+id/textViewProfileContact"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="+602343940"
@@ -55,7 +55,7 @@
         app:layout_constraintVertical_bias="0.549" />
 
     <TextView
-        android:id="@+id/textView23"
+        android:id="@+id/textViewProfileEmail"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="chin@gmail.com"
@@ -67,7 +67,7 @@
         app:layout_constraintVertical_bias="0.435" />
 
     <TextView
-        android:id="@+id/textView19"
+        android:id="@+id/textViewProfileName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Chin Ze Yuan"
@@ -114,7 +114,7 @@
         android:background="#9D9D9D"
         app:layout_constraintEnd_toEndOf="@+id/linearLayout"
         app:layout_constraintStart_toStartOf="@+id/linearLayout"
-        app:layout_constraintTop_toBottomOf="@+id/textView23" />
+        app:layout_constraintTop_toBottomOf="@+id/textViewProfileEmail" />
 
     <View
         android:id="@+id/view2"
@@ -124,7 +124,7 @@
         android:background="#9D9D9D"
         app:layout_constraintEnd_toEndOf="@+id/linearLayout"
         app:layout_constraintStart_toStartOf="@+id/linearLayout"
-        app:layout_constraintTop_toBottomOf="@+id/textViewDate" />
+        app:layout_constraintTop_toBottomOf="@+id/textViewProfileContact" />
 
     <TextView
         android:id="@+id/textView26"
@@ -140,7 +140,7 @@
         app:layout_constraintVertical_bias="0.661" />
 
     <TextView
-        android:id="@+id/textView27"
+        android:id="@+id/textViewProfileAddress"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="TARUMT"

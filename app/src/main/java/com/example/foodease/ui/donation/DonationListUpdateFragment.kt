@@ -41,7 +41,7 @@ class DonationListUpdateFragment : Fragment() {
             val quantity = selectedItem.quantity
 
             binding.foodnameEditText.setText(name)
-            binding.instructionEditText.setText(instruction)
+            binding.dateEditText.setText(instruction)
             binding.descEditText.setText("")
             binding.editTextTextQuatity.setText(quantity.toString())
         })
@@ -59,7 +59,7 @@ class DonationListUpdateFragment : Fragment() {
 
             val newName = binding.foodnameEditText.text.toString()
             val newDescription = binding.descEditText.text.toString()
-            val newInstruction = binding.instructionEditText.text.toString()
+            val newInstruction = binding.toString()
             val newQuantity = binding.editTextTextQuatity.text.toString().toInt()
 
             val donation = mapOf(

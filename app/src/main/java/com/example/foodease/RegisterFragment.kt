@@ -1,5 +1,6 @@
 package com.example.foodease
 
+import android.app.ProgressDialog
 import android.os.Bundle
 import android.util.Log
 import android.util.Patterns
@@ -11,9 +12,12 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import com.example.foodease.databinding.FragmentRegisterBinding
+import com.example.foodease.ui.user.User
+import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.auth.ktx.auth
+import com.google.firebase.database.ktx.database
 import com.google.firebase.ktx.Firebase
 
 class RegisterFragment : Fragment() {
@@ -39,26 +43,21 @@ class RegisterFragment : Fragment() {
         // Show the toolbar
         (activity as AppCompatActivity?)?.supportActionBar?.show()
 
+        //Hide the bottom navigation view
+        val bottomNavigationView = activity?.findViewById<BottomNavigationView>(R.id.bottomNavAdmin)
+        bottomNavigationView?.visibility = View.GONE
+
         binding.textViewHyperLogin.setOnClickListener {
             findNavController().navigate(R.id.action_registerFragment_to_loginFragment)
         }
 
-        binding.buttonRegister.setOnClickListener {
-            registerUser()
-        }
-
-        return view
-    }
-
-    private fun registerUser() {
         val registerButton = binding.buttonRegister
-
-        val name = binding.editTextName.text.toString()
-        val email = binding.editTextEmail.toString()
-        val password = binding.editTextPassword.text.toString()
-        val confirmPassword = binding.editTextConfirmPassword.text.toString()
-
+        Log.i("startRegister", "Auth Result ${auth.currentUser}")
         registerButton.setOnClickListener {
+            val name = binding.editTextName.text.toString()
+            val email = binding.editTextEmail.text.toString()
+            val password = binding.editTextPassword.text.toString()
+            val confirmPassword = binding.editTextConfirmPassword.text.toString()
 
             if (name.isEmpty()) {
                 Toast.makeText(context, "Name cannot be empty", Toast.LENGTH_SHORT).show()
@@ -93,17 +92,35 @@ class RegisterFragment : Fragment() {
                 return@setOnClickListener
             }
 
+            val progressDialog = ProgressDialog(requireContext())
+            progressDialog.setTitle("Please Wait")
+            progressDialog.setMessage("Loading ...")
+            progressDialog.show()
+
             auth.createUserWithEmailAndPassword(email, password)
                 .addOnCompleteListener(requireActivity()) { task ->
                     if (task.isSuccessful) {
                         val user = auth.currentUser
+                        val userId = user?.uid.toString()
+                        val userProfile = User(userId, name, email)
+
+                        user?.uid.let{userId->
+                            val db = Firebase.database
+                            val ref = db.getReference("users")
+                            ref.child(userId.toString()).setValue(userProfile)
+                        }
+
+                        progressDialog.dismiss()
+
                         Toast.makeText(
                             requireContext(),
                             "Created successful",
                             Toast.LENGTH_SHORT
                         ).show()
+                        Log.i("firebase", "Auth Result $user")
                         updateUI(user)
                     } else {
+                        progressDialog.dismiss()
                         Toast.makeText(
                             requireContext(),
                             "Authentication failed: ${task.exception?.message}",
@@ -114,12 +131,13 @@ class RegisterFragment : Fragment() {
                 }
         }
 
+        return view
     }
 
     private fun updateUI(user: FirebaseUser?) {
         // Implement UI updates here based on user registration status
         if (user != null) {
-            // Registration was successful, navigate to the next screen or perform other actions
+            findNavController().navigate(R.id.selectLogin)
         } else {
             // Registration failed, handle the error or show an appropriate message
         }

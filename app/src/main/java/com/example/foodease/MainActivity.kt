@@ -71,18 +71,13 @@ class MainActivity : AppCompatActivity() {
         // 初始化Firebase Authentication
         val auth = FirebaseAuth.getInstance()
 
-        auth.addAuthStateListener {
-            if (it.currentUser != null) {
+
+            if (auth.currentUser != null) {
                 Log.i("firebase", "Auth Yes")
 
                 navigationForLoggedIn()
-            } else {
-                navController.navigate(R.id.selectLogin)
-                Log.i("firebase", "Auth Fusck")
-
             }
 
-        }
 
         navController.addOnDestinationChangedListener { _, destination, _ ->
             val user = FirebaseAuth.getInstance().currentUser
@@ -135,7 +130,6 @@ class MainActivity : AppCompatActivity() {
                 navController.navigate(R.id.homeFragment)
             } else {
                 // User is not logged in, set up restricted navigation
-                redirectHome()
                 navigationForNonLoggedIn()
             }
         }

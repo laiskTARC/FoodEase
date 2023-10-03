@@ -1,14 +1,10 @@
 package com.example.foodease.ui.event
 
-import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Button
 import android.widget.ImageView
 import android.widget.TextView
-import androidx.fragment.app.viewModels
-import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import com.example.foodease.R
 
@@ -22,7 +18,7 @@ class EventAdapter (private val onItemClick: (Event) -> Unit) : RecyclerView.Ada
         val eventId : TextView = view.findViewById(R.id.textViewEventId)
         val eventName : TextView = view.findViewById(R.id.textViewEventName)
         val venue : TextView = view.findViewById(R.id.textViewVenue)
-        val date : TextView = view.findViewById(R.id.textViewDate)
+        val date : TextView = view.findViewById(R.id.textViewProfileContact)
 
 
         init {

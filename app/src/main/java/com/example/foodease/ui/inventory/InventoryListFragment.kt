@@ -116,8 +116,7 @@ class InventoryListFragment : Fragment(){
                 Log.e(TAG, "Database operation canceled: ${error.message}")
 
                 // You can also show a message to the user indicating the error
-                // For example, if you're using a Toast:
-                Toast.makeText(context, "Database operation canceled: ${error.message}", Toast.LENGTH_SHORT).show()
+                // For example, if you're using a Toast
 
                 // You can also perform additional error-specific handling based on the error code
                 if (error.code == DatabaseError.PERMISSION_DENIED) {

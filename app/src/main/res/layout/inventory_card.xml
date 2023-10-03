@@ -21,8 +21,7 @@
             android:layout_width="match_parent"
             android:layout_height="200dp"
             android:adjustViewBounds="false"
-            app:srcCompat="@drawable/bg"
-            android:src="@drawable/bg" />
+            app:srcCompat="@drawable/logo" />
 
         <TextView
             android:id="@+id/textViewInventoryName"

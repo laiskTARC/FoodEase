@@ -30,15 +30,16 @@ class LoginFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Hide the toolbar
-        (activity as AppCompatActivity?)?.supportActionBar?.hide()
-
         //View Binding
         _binding = FragmentLoginBinding.inflate(inflater, container, false)
         return binding.root
 
         // Show the toolbar
         (activity as AppCompatActivity?)?.supportActionBar?.show()
+
+        //Hide the bottom navigation view
+        val bottomNavigationView = activity?.findViewById<BottomNavigationView>(R.id.bottomNavAdmin)
+        bottomNavigationView?.visibility = View.GONE
 
 
 
@@ -53,6 +54,7 @@ class LoginFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         val auth = Firebase.auth
+        Log.i("startLogin", "Auth Result ${auth.currentUser}")
         val loginButton = binding.buttonAdminLogin
         loginButton.setOnClickListener {
 
@@ -79,8 +81,22 @@ class LoginFragment : Fragment() {
             auth.signInWithEmailAndPassword(email, password)
                 .addOnCompleteListener { task ->
                     if (task.isSuccessful) {
-                        Log.i("firebaseLogin", "Auth Fuin $user")
-                        findNavController().navigate(R.id.action_loginFragment_to_homeFragment)
+                        // Sign-in was successful, retrieve the user object
+                        val user = auth.currentUser
+                        Log.i("firebaseLogin", "Auth Result $user")
+
+                        if (user != null) {
+                            // User is signed in, navigate to the desired destination
+                            Log.i("startLogin", "Auth Result ${auth.currentUser}")
+                            findNavController().navigate(R.id.action_loginFragment_to_homeFragment)
+                        } else {
+                            // User object is still null, handle the case if needed
+                            Snackbar.make(
+                                view,
+                                "Authentication failed",
+                                Snackbar.LENGTH_SHORT
+                            ).show()
+                        }
                     } else {
                         // If sign-in fails, display a message to the user.
                         Snackbar.make(
@@ -90,6 +106,7 @@ class LoginFragment : Fragment() {
                         ).show()
                     }
                 }
+
         }
     }
 
