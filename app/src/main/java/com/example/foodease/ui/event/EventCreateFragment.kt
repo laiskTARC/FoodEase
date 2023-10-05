@@ -1,7 +1,7 @@
 package com.example.foodease.ui.event
 
+import android.app.ProgressDialog
 import android.content.Context
-import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
 import android.provider.OpenableColumns
@@ -61,15 +61,19 @@ class EventCreateFragment : Fragment() {
         val ref = database.getReference("events") // Database Name
         storageRef = FirebaseStorage.getInstance().getReference("img")
 
+        var imagePickerActivityResult =
+            registerForActivityResult(ActivityResultContracts.GetContent()) { uri ->
+                binding.imageView2.setImageURI(uri)
+                if (uri != null) {
+                    // Getting URI of the selected image
+                    imageUri = uri
+                }
+            }
+
         buttonSelectImage.setOnClickListener {
-            // PICK INTENT picks item from data
-            // and returned selected item
-            val galleryIntent = Intent(Intent.ACTION_PICK)
-            // here item is type of image
-            galleryIntent.type = "image/*"
-            // ActivityResultLauncher callback
-            imagePickerActivityResult.launch("images/*")
+            imagePickerActivityResult.launch("image/*") // Launch the gallery intent
         }
+
 
         buttonCreate.setOnClickListener {
             val eventName = binding.editTextEventName.text.toString().trim()
@@ -119,14 +123,18 @@ class EventCreateFragment : Fragment() {
             val newChildRef = ref.push()
             val id = newChildRef.key ?: ""
 
-            // Upload Task with upload to directory 'events'
-            val sd = getFileName(requireContext(), imageUri!!) // Get the file name
+            val originalFilename = getFileName(requireContext(), imageUri!!)
+            val timestamp = System.currentTimeMillis()
+            val uniqueFilename = "${timestamp}_$originalFilename"
 
-            val uploadTask = storageRef.child("events/$sd").putFile(imageUri!!)
-
+            val uploadTask = storageRef.child("events/$uniqueFilename").putFile(imageUri!!)
+            val progressDialog = ProgressDialog(requireContext())
+            progressDialog.setTitle("Please Wait")
+            progressDialog.setMessage("Loading ...")
+            progressDialog.show()
             uploadTask.addOnSuccessListener { uploadResult ->
                 // Get the download URL for the uploaded image
-                storageRef.child("events/$sd").downloadUrl.addOnSuccessListener { downloadUri ->
+                storageRef.child("events/$uniqueFilename").downloadUrl.addOnSuccessListener { downloadUri ->
                     // Create the event object with the image URL
                     val imageUrl = downloadUri.toString()
                     val event = Event(
@@ -143,6 +151,7 @@ class EventCreateFragment : Fragment() {
                     // Push the event object to the Firebase Realtime Database
                     newChildRef.setValue(event).addOnSuccessListener {
                         Snackbar.make(view, "Saved", Snackbar.LENGTH_SHORT).show()
+                        progressDialog.dismiss()
                         findNavController().navigate(R.id.eventFragment)
                     }.addOnFailureListener {
                         Snackbar.make(view, "Failed", Snackbar.LENGTH_SHORT).show()
@@ -166,14 +175,7 @@ class EventCreateFragment : Fragment() {
         (activity as AppCompatActivity?)?.supportActionBar?.setDisplayHomeAsUpEnabled(false)
     }
 
-    private var imagePickerActivityResult =
-        registerForActivityResult(ActivityResultContracts.GetContent()) { uri ->
-            binding.imageView2.setImageURI(uri)
-            if (uri != null) {
-                // Getting URI of the selected image
-                imageUri = uri
-            }
-        }
+
 
     private fun getFileName(context: Context, uri: Uri): String? {
         if (uri.scheme == "content") {

@@ -1,32 +1,24 @@
 package com.example.foodease.ui.event
 
-import android.content.Context
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.Menu
 import android.view.MenuInflater
 import android.view.MenuItem
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
-import androidx.appcompat.widget.Toolbar
-import androidx.core.net.toUri
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
-import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
+import com.bumptech.glide.Glide
 import com.example.foodease.R
 import com.example.foodease.databinding.FragmentEventDetailBinding
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.android.material.snackbar.Snackbar
-import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.ktx.database
 import com.google.firebase.ktx.Firebase
-import com.google.firebase.storage.ktx.storage
-import java.io.File
 
 
 class EventDetailFragment : Fragment() {
@@ -68,6 +60,7 @@ class EventDetailFragment : Fragment() {
             val end = selectedItem.endingDate
             val address = selectedItem.venueAddress
             val volunteer = selectedItem.volunteerRequired
+            val img = selectedItem.imageUrl
 
             binding.editTextEventName.setText(name)
             binding.textViewDataDescription.setText(description)
@@ -75,6 +68,10 @@ class EventDetailFragment : Fragment() {
             binding.textViewDataStart.setText(start)
             binding.textViewDataEnd.setText(end)
             binding.textViewDataVolunteerRequired.setText(volunteer.toString())
+            Glide.with(this)
+                .load(img) // Load the image from the event's imageUrl
+                .error(R.drawable.no_img) // Error image if the load fails (replace with your resource)
+                .into(binding.imageViewDataProfile) // Set the loaded image to your ImageView
 
             val eventHistory = Event(id,name,description,address,start,end,volunteer)
             eventViewModel.insert(eventHistory)

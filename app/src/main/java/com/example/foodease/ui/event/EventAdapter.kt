@@ -6,6 +6,7 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
 import com.example.foodease.R
 
 class EventAdapter (private val onItemClick: (Event) -> Unit) : RecyclerView.Adapter<EventAdapter.ViewHolder>(){
@@ -24,22 +25,6 @@ class EventAdapter (private val onItemClick: (Event) -> Unit) : RecyclerView.Ada
         init {
             // Define click listener for the ViewHolder's View.
             view.setOnClickListener {
-
-/*
-                val sharedPref = it.context.getSharedPreferences("event_shared_pref", Context.MODE_PRIVATE)
-                val editor = sharedPref.edit()
-
-                val event = dataList[adapterPosition]
-                editor?.putString("id", event.id)
-                editor?.putString("name", event.name)
-                editor?.putString("description", event.description)
-                editor?.putString("address", event.venueAddress)
-                editor?.putString("starting", event.startingDate)
-                editor?.putString("ending", event.endingDate)
-                editor?.putString("volunteerRequired", event.volunteerRequired.toString())
-                it.findNavController().navigate(R.id.action_eventFragment_to_eventDetailFragment)
-                editor?.apply()
-                */
             }
         }
     }
@@ -63,6 +48,15 @@ class EventAdapter (private val onItemClick: (Event) -> Unit) : RecyclerView.Ada
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val event = dataList[position]
+        if (!event.imageUrl.isNullOrEmpty()) {
+            Glide.with(holder.itemView.context)
+                .load(event.imageUrl) // Load the image from the event's imageUrl
+                .error(R.drawable.no_img) // Error image if the load fails (replace with your resource)
+                .into(holder.image) // Set the loaded image to your ImageView
+        } else {
+            // If no image URL is provided, load the default image
+            holder.image.setImageResource(R.drawable.no_img) // Replace with your default image resource
+        }
         holder.eventId.text = event.id
         holder.eventName.text = event.name
         holder.venue.text = event.venueAddress
